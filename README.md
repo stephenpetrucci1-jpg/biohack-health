@@ -52,7 +52,37 @@ node src/build.js     # writes dist/
 npx http-server dist  # preview on http://127.0.0.1:8080
 ```
 
-## Deploy to Cloudflare Pages
+## Hosting
+
+The domain was bought inside HighLevel, so its DNS zone lives in HighLevel's
+Cloudflare account rather than ours. Cloudflare Pages will not accept a custom
+domain whose zone belongs to another account, so the live site runs on Netlify,
+which accepts a domain pointed at it from any DNS provider. The Cloudflare
+Pages build still works and is kept as a fallback; the only difference between
+them is the subscribe function's handler signature.
+
+## Deploy to Netlify
+
+```bash
+npm install -g netlify-cli
+netlify login
+node src/build.js
+netlify deploy --prod --dir=dist --functions=netlify/functions
+```
+
+Set `GHL_TOKEN` and `GHL_LOCATION_ID` under Site configuration, Environment
+variables. Then point the domain by adding these records in HighLevel,
+Settings, Domains, DNS records:
+
+| Type | Name | Content |
+| --- | --- | --- |
+| A | biohackhealth.uk | 75.2.60.5 |
+| CNAME | www | <your-site>.netlify.app |
+
+Delete the two existing records first, the apex `A` to `162.159.140.166` and
+`www` to `vibe.ludicrous.cloud`, both of which point at HighLevel.
+
+## Deploy to Cloudflare Pages (fallback)
 
 ```bash
 npx wrangler pages project create biohack-health --production-branch main

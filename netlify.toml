@@ -1,0 +1,30 @@
+# The site is prebuilt and committed as dist/, so Netlify only publishes it.
+[build]
+  publish = "dist"
+  command = "npm install && node src/build.js"
+  functions = "netlify/functions"
+
+# The page posts to /api/subscribe on every host; map it to the function here.
+[[redirects]]
+  from = "/api/subscribe"
+  to = "/.netlify/functions/subscribe"
+  status = 200
+  force = true
+
+# Long-lived hashed-by-content assets. HTML stays revalidated so edits go live.
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
