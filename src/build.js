@@ -54,6 +54,39 @@ function picture(name, alt, { eager = false, sizes = '(max-width: 760px) 100vw, 
 
 const CATEGORIES = [...new Set(posts.map((p) => p.category))];
 
+/**
+ * Google truncates descriptions around 155 characters and titles around 60.
+ * Cut on a word boundary so the snippet reads as a sentence rather than a
+ * fragment ending mid-word.
+ */
+function clamp(text, max) {
+  if (!text || text.length <= max) return text;
+  const cut = text.slice(0, max);
+  return cut.slice(0, cut.lastIndexOf(' ')).replace(/[,;:.\s]+$/, '') + '…';
+}
+
+/**
+ * The brand suffix helps click-through, but only when there is room for it.
+ * These headlines are long and descriptive, so on those the article title
+ * alone is the better use of the pixels.
+ */
+function pageTitle(title) {
+  const withBrand = `${title} — ${BRAND}`;
+  return withBrand.length <= 62 ? withBrand : title;
+}
+
+/**
+ * Body links were authored as absolute URLs without a trailing slash, so every
+ * internal click cost a redirect hop. Rewrite them to root-relative paths that
+ * match where the pages actually live.
+ */
+function normaliseLinks(html) {
+  return html
+    .replace(/href="https:\/\/biohackhealth\.uk\/blog\/([a-z0-9-]+)\/?"/g, 'href="/blog/$1/"')
+    .replace(/href="https:\/\/biohackhealth\.uk\/\?/g, 'href="/?')
+    .replace(/href="https:\/\/biohackhealth\.uk\/"/g, 'href="/"');
+}
+
 /* ------------------------------------------------------------------ */
 /* styles                                                              */
 /* ------------------------------------------------------------------ */
@@ -131,7 +164,14 @@ header.site nav a:hover,header.site nav a[aria-current]{color:hsl(var(--foregrou
   border-radius:999px;padding:6px 14px;font:inherit;font-size:13.5px;cursor:pointer}
 .chip[aria-pressed="true"]{background:hsl(var(--accent));color:hsl(var(--accent-foreground));
   border-color:transparent;font-weight:500}
+.filters input[type=search]{margin-left:6px;flex:0 1 210px;min-width:150px;padding:6px 12px;
+  font:inherit;font-size:13.5px;border:1px solid hsl(var(--border));border-radius:999px;
+  background:transparent;color:hsl(var(--foreground))}
+.filters input[type=search]:focus{outline:2px solid hsl(var(--primary));outline-offset:1px}
 .count{margin-left:auto;color:hsl(var(--muted-foreground));font-size:13.5px}
+.empty{color:hsl(var(--muted-foreground));font-size:15px;margin:0 0 26px}
+.empty button{background:none;border:0;padding:0;font:inherit;color:hsl(var(--primary));
+  text-decoration:underline;cursor:pointer}
 
 /* cards */
 .grid{display:grid;gap:34px;padding-bottom:12px}
@@ -215,7 +255,7 @@ footer.site .fine{border-top:1px solid hsl(var(--border));padding-top:20px;font-
 /* layout                                                              */
 /* ------------------------------------------------------------------ */
 
-function layout({ title, description, canonical, ogImage, jsonLd = [], body, wide = false }) {
+function layout({ title, description, canonical, ogImage, jsonLd = [], body, wide = false, article = null }) {
   return `<!doctype html>
 <html lang="en-GB">
 <head>
@@ -237,6 +277,11 @@ function layout({ title, description, canonical, ogImage, jsonLd = [], body, wid
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${SITE}/img/${ogImage}.webp">
+${article ? `<meta property="article:published_time" content="${article.published}">
+<meta property="article:modified_time" content="${article.published}">
+<meta property="article:author" content="${esc(article.author)}">
+<meta property="article:section" content="${esc(article.section)}">
+<meta name="author" content="${esc(article.author)}">` : ''}
 <style>${CSS}</style>
 ${jsonLd.length ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
 </head>
@@ -334,29 +379,50 @@ function buildIndex() {
   <div class="filters">
     <button class="chip" data-filter="ALL" aria-pressed="true">All</button>
     ${CATEGORIES.map((c) => `<button class="chip" data-filter="${esc(c)}" aria-pressed="false">${esc(c)}</button>`).join('')}
+    <label class="hidden" for="q">Search articles</label>
+    <input id="q" type="search" placeholder="Search articles" autocomplete="off" spellcheck="false">
     <span class="count" id="count">${posts.length} articles</span>
   </div>
+  <p class="empty hidden" id="empty">No articles match that search. <button type="button" id="reset">Show all</button></p>
   <div class="grid" id="grid">${posts.map((p, i) => cardFor(p, i === 0)).join('\n')}</div>
   ${subscribeBlock}
 </main>
 <script>
 (function(){
   var grid=document.getElementById('grid'), count=document.getElementById('count');
+  var empty=document.getElementById('empty'), reset=document.getElementById('reset');
+  var q=document.getElementById('q');
   var cards=[].slice.call(grid.children), chips=[].slice.call(document.querySelectorAll('.chip'));
-  function apply(cat){
-    var n=0;
+  var cat='ALL';
+
+  function apply(){
+    var term=q.value.trim().toLowerCase(), n=0;
     cards.forEach(function(c){
-      var show = cat==='ALL' || c.dataset.category===cat;
+      var show=(cat==='ALL'||c.dataset.category===cat) && (!term||c.dataset.search.indexOf(term)>-1);
       c.classList.toggle('hidden', !show); if(show) n++;
     });
     chips.forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.filter===cat)); });
     count.textContent = n + (n===1?' article':' articles');
-    var url = cat==='ALL' ? '/' : '/?category='+encodeURIComponent(cat);
-    history.replaceState(null,'',url);
+    empty.classList.toggle('hidden', n>0);
+    // Reflect state in the URL so a filtered view can be shared, without
+    // adding history entries for every keystroke.
+    var params=new URLSearchParams();
+    if(cat!=='ALL') params.set('category',cat);
+    if(term) params.set('q',q.value.trim());
+    var s=params.toString();
+    history.replaceState(null,'', s ? '/?'+s : '/');
   }
-  chips.forEach(function(b){ b.addEventListener('click', function(){ apply(b.dataset.filter); }); });
-  var initial = new URLSearchParams(location.search).get('category');
-  if(initial && chips.some(function(b){return b.dataset.filter===initial;})) apply(initial);
+
+  chips.forEach(function(b){ b.addEventListener('click', function(){ cat=b.dataset.filter; apply(); }); });
+  q.addEventListener('input', apply);
+  reset.addEventListener('click', function(){ cat='ALL'; q.value=''; apply(); q.focus(); });
+
+  // Deep links such as /?category=News or /?q=bpc arrive pre-filtered.
+  var sp=new URLSearchParams(location.search);
+  var c0=sp.get('category'), q0=sp.get('q');
+  if(c0 && chips.some(function(b){return b.dataset.filter===c0;})) cat=c0;
+  if(q0) q.value=q0;
+  if(c0||q0) apply();
 })();
 </script>`;
 
@@ -387,7 +453,7 @@ function buildIndex() {
 
   write('index.html', layout({
     title: `${BRAND} — ${TAGLINE}`,
-    description: DESCRIPTION,
+    description: clamp(DESCRIPTION, 155),
     canonical: SITE + '/',
     ogImage: 'brand-og',
     jsonLd, body, wide: true,
@@ -395,7 +461,8 @@ function buildIndex() {
 }
 
 function buildPost(p) {
-  const { body: prose, tags } = splitTags(p.bodyHtml);
+  const { body: rawProse, tags } = splitTags(p.bodyHtml);
+  const prose = normaliseLinks(rawProse);
   const name = imageName(p.hero);
   const iso = new Date(p.date).toISOString().slice(0, 10);
 
@@ -448,10 +515,11 @@ function buildPost(p) {
   ];
 
   write(`blog/${p.slug}/index.html`, layout({
-    title: `${p.title} — ${BRAND}`,
-    description: p.description || p.dek,
+    title: pageTitle(p.title),
+    description: clamp(p.description || p.dek, 155),
     canonical: `${SITE}/blog/${p.slug}/`,
     ogImage: name,
+    article: { published: iso, author: p.author, section: p.category },
     jsonLd, body,
   }));
 }
