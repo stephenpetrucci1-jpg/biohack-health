@@ -55,6 +55,34 @@ function picture(name, alt, { eager = false, sizes = '(max-width: 760px) 100vw, 
 const CATEGORIES = [...new Set(posts.map((p) => p.category))];
 
 /**
+ * With only a handful of articles, internal links are the strongest on-site
+ * signal available: they spread authority and give crawlers a route to every
+ * page from every page. Body links are editorial and sparse, so each article
+ * also ends with the three most related pieces, ranked by shared tags and then
+ * by category.
+ */
+function relatedTo(post) {
+  return posts
+    .filter((p) => p.slug !== post.slug)
+    .map((p) => ({
+      post: p,
+      score:
+        p.tags.filter((t) => post.tags.includes(t)).length * 2 +
+        (p.category === post.category ? 1 : 0),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map((x) => x.post);
+}
+
+/** "14 min read" -> ISO 8601 duration, for schema.org timeRequired. */
+const isoDuration = (readTime) => `PT${(readTime.match(/\d+/) || [5])[0]}M`;
+
+/** Rough word count of the article body, for schema.org wordCount. */
+const wordCount = (html) =>
+  html.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+
+/**
  * Google truncates descriptions around 155 characters and titles around 60.
  * Cut on a word boundary so the snippet reads as a sentence rather than a
  * fragment ending mid-word.
@@ -70,10 +98,14 @@ function clamp(text, max) {
  * These headlines are long and descriptive, so on those the article title
  * alone is the better use of the pixels.
  */
-function pageTitle(title) {
-  const withBrand = `${title} — ${BRAND}`;
-  return withBrand.length <= 62 ? withBrand : title;
-}
+/**
+ * The <title> is a search result headline, not the page headline. Articles use
+ * a shorter keyword-first version and carry no brand suffix: Google appends the
+ * site name itself, and spending characters on it pushes the distinctive words
+ * past the truncation point. The homepage keeps the brand, since that is the
+ * result people search the brand to find.
+ */
+const pageTitle = (post) => post.seoTitle || post.title;
 
 /**
  * Body links were authored as absolute URLs without a trailing slash, so every
@@ -192,8 +224,19 @@ header.site nav a:hover,header.site nav a[aria-current]{color:hsl(var(--foregrou
 
 /* article */
 article.post{padding:44px 0 10px}
-.backlink{color:hsl(var(--muted-foreground));text-decoration:none;font-size:14px}
-.backlink:hover{color:hsl(var(--primary))}
+.crumbs{display:flex;gap:8px;align-items:center;font-size:13.5px;color:hsl(var(--muted-foreground))}
+.crumbs a{text-decoration:none}
+.crumbs a:hover{color:hsl(var(--primary))}
+.related{border-top:1px solid hsl(var(--border));margin-top:52px;padding-top:34px}
+.related h2{font-size:15px;text-transform:uppercase;letter-spacing:.07em;margin:0 0 18px;
+  color:hsl(var(--muted-foreground));font-weight:600}
+.related ul{list-style:none;margin:0;padding:0;display:grid;gap:16px}
+.related a{display:block;text-decoration:none;padding:16px 18px;border-radius:12px;
+  border:1px solid hsl(var(--border));background:hsl(var(--card))}
+.related a:hover{border-color:hsl(var(--primary))}
+.related .t{display:block;font-weight:600;font-size:16.5px;margin:9px 0 5px;letter-spacing:-.012em}
+.related a:hover .t{color:hsl(var(--primary))}
+.related .d{display:block;color:hsl(var(--muted-foreground));font-size:14.5px}
 article.post h1{font-size:clamp(29px,4.6vw,40px);line-height:1.14;
   letter-spacing:-.028em;margin:18px 0 16px;font-weight:600}
 article.post .dek{font-size:19px;color:hsl(var(--muted-foreground));margin:0 0 26px}
@@ -273,6 +316,10 @@ function layout({ title, description, canonical, ogImage, jsonLd = [], body, wid
 <meta property="og:type" content="${wide ? 'website' : 'article'}">
 <meta property="og:url" content="${canonical}">
 <meta property="og:image" content="${SITE}/img/${ogImage}.webp">
+<meta property="og:image:width" content="1376">
+<meta property="og:image:height" content="768">
+<meta property="og:image:alt" content="${esc(title)}">
+<meta property="og:locale" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
@@ -468,7 +515,10 @@ function buildPost(p) {
 
   const body = `<main class="wrap">
   <article class="post">
-    <a class="backlink" href="/">← Back to Journal</a>
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/">Journal</a><span aria-hidden="true">›</span>
+      <a href="/?category=${encodeURIComponent(p.category)}">${esc(p.category)}</a>
+    </nav>
     <div class="meta" style="display:flex;gap:10px;align-items:center;font-size:12.5px;margin:18px 0 0">
       <span class="tag">${esc(p.category)}</span><span>${esc(p.readTime)}</span>
     </div>
@@ -478,10 +528,19 @@ function buildPost(p) {
       <span class="avatar">${esc(p.initials)}</span>
       <span><span class="n">${esc(p.author)}</span><br><span class="r">${esc(p.role)} · <time datetime="${iso}">${esc(p.date)}</time></span></span>
     </div>
-    ${picture(name, p.title, { eager: true, sizes: '(max-width:760px) 100vw, 720px' })}
+    ${picture(name, p.heroAlt || p.title, { eager: true, sizes: '(max-width:760px) 100vw, 720px' })}
     <div class="prose">${prose}</div>
-    ${tags.length ? `<div class="tags">${tags.map((t) => `<a href="/?category=${encodeURIComponent(p.category)}">#${esc(t)}</a>`).join('')}</div>` : ''}
+    ${tags.length ? `<div class="tags">${tags.map((t) => `<a href="/?q=${encodeURIComponent(t)}">#${esc(t)}</a>`).join('')}</div>` : ''}
   </article>
+  <section class="related" aria-labelledby="related-h">
+    <h2 id="related-h">Related reading</h2>
+    <ul>
+      ${relatedTo(p).map((r) => `<li><a href="/blog/${r.slug}/">
+        <span class="tag">${esc(r.category)}</span>
+        <span class="t">${esc(r.title)}</span>
+        <span class="d">${esc(clamp(r.dek, 110))}</span></a></li>`).join('')}
+    </ul>
+  </section>
   ${subscribeBlock}
 </main>`;
 
@@ -503,6 +562,10 @@ function buildPost(p) {
       mainEntityOfPage: { '@type': 'WebPage', '@id': `${SITE}/blog/${p.slug}/` },
       articleSection: p.category,
       keywords: tags.join(', '),
+      wordCount: wordCount(prose),
+      timeRequired: isoDuration(p.readTime),
+      inLanguage: 'en-GB',
+      isAccessibleForFree: true,
     },
     {
       '@context': 'https://schema.org',
@@ -515,7 +578,7 @@ function buildPost(p) {
   ];
 
   write(`blog/${p.slug}/index.html`, layout({
-    title: pageTitle(p.title),
+    title: pageTitle(p),
     description: clamp(p.description || p.dek, 155),
     canonical: `${SITE}/blog/${p.slug}/`,
     ogImage: name,
