@@ -20,6 +20,17 @@ const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/posts.json'), 'utf
 const imagemap = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/imagemap.json'), 'utf8'));
 
 const BRAND = 'Biohack Health';
+
+/**
+ * Google Search Console verification token.
+ *
+ * Set this to the content value of the HTML tag Search Console shows, e.g.
+ * "abc123...". Verifying by meta tag rather than DNS is deliberate: the DNS
+ * zone for this domain lives in HighLevel's Cloudflare account, so the
+ * DNS-based flow cannot be completed from our side. Leave empty and no tag is
+ * emitted.
+ */
+const GOOGLE_VERIFICATION = process.env.GOOGLE_VERIFICATION || '';
 const TAGLINE = 'Peptide Science, Research and Recovery';
 const DESCRIPTION =
   'An educational journal covering peptide science, GLP-1 and metabolic research, recovery protocols, and the regulatory landscape.';
@@ -307,6 +318,7 @@ function layout({ title, description, canonical, ogImage, jsonLd = [], body, wid
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <link rel="canonical" href="${canonical}">
+${GOOGLE_VERIFICATION ? `<meta name="google-site-verification" content="${esc(GOOGLE_VERIFICATION)}">` : ''}
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preload" href="/fonts/inter.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="alternate" type="application/rss+xml" title="${BRAND}" href="/rss.xml">
