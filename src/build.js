@@ -46,6 +46,26 @@ const esc = (s = '') =>
 const imageName = (url) => imagemap[String(url).split('/').pop().replace('.png', '')] || 'brand-og';
 
 /** Trailing hashtag block is markup, not prose: pull it out and parse it. */
+/**
+ * Give every table cell a data-label carrying its column heading, so the
+ * stacked mobile layout can show which column a value belongs to.
+ */
+function labelTableCells(html) {
+  return html.replace(/<table>[\s\S]*?<\/table>/g, (table) => {
+    const heads = [...table.matchAll(/<th>(.*?)<\/th>/g)].map((m) => m[1].replace(/<[^>]+>/g, '').trim());
+    if (!heads.length) return table;
+    return table.replace(/<tr>([\s\S]*?)<\/tr>/g, (row, cells) => {
+      if (row.includes('<th>')) return row;
+      let i = 0;
+      return row.replace(/<td>/g, () => {
+        const label = heads[i % heads.length] || '';
+        i += 1;
+        return label ? `<td data-label="${label.replace(/"/g, '&quot;')}">` : '<td>';
+      });
+    });
+  });
+}
+
 function splitTags(bodyHtml) {
   const m = bodyHtml.match(/<div>((?:<a href="[^"]*\?q=[^"]*">#[^<]*<\/a>)+)<\/div>\s*$/);
   if (!m) return { body: bodyHtml, tags: [] };
@@ -148,22 +168,10 @@ const CSS = `
   --border:180 16% 90%;
   --maxw:720px;
 }
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --background:200 30% 7%; --foreground:180 14% 92%;
-    --card:200 28% 9%; --muted:200 20% 16%; --muted-foreground:180 10% 62%;
-    --primary:178 55% 48%; --primary-foreground:200 30% 8%;
-    --accent:178 35% 18%; --accent-foreground:178 55% 60%;
-    --border:200 18% 20%;
-  }
-}
-:root[data-theme="dark"]{
-  --background:200 30% 7%; --foreground:180 14% 92%;
-  --card:200 28% 9%; --muted:200 20% 16%; --muted-foreground:180 10% 62%;
-  --primary:178 55% 48%; --primary-foreground:200 30% 8%;
-  --accent:178 35% 18%; --accent-foreground:178 55% 60%;
-  --border:200 18% 20%;
-}
+/* One theme everywhere. Following the reader's system setting meant the site
+   looked different on a phone in light mode and a laptop in dark mode, which
+   reads as a bug rather than a feature for a publication. */
+:root{color-scheme:light}
 
 @font-face{font-family:Inter;src:url(/fonts/inter.woff2) format('woff2');
   font-weight:300 700;font-display:swap;font-style:normal}
@@ -192,6 +200,15 @@ header.site nav a:hover,header.site nav a[aria-current]{color:hsl(var(--foregrou
   font:inherit;font-size:14.5px;font-weight:500;text-decoration:none;
   background:hsl(var(--primary));color:hsl(var(--primary-foreground))}
 .btn:hover{filter:brightness(1.08)}
+/* At phone widths the brand, four nav links and the button do not fit on one
+   row and pushed the page into a horizontal scroll. The categories are still
+   reachable from the filters on the journal page and from the footer. */
+@media (max-width:680px){
+  header.site nav{display:none}
+  header.site .bar{height:56px;gap:12px}
+  .brand{font-size:15px}
+  .btn{padding:8px 14px;font-size:14px}
+}
 
 /* hero */
 .hero{padding:64px 0 30px}
@@ -270,14 +287,40 @@ article.post > picture img{border-radius:12px;border:1px solid hsl(var(--border)
 .prose hr{border:0;border-top:1px solid hsl(var(--border));margin:38px 0}
 .prose blockquote{margin:26px 0;padding:2px 0 2px 20px;
   border-left:3px solid hsl(var(--primary));color:hsl(var(--muted-foreground))}
-.prose table{width:100%;border-collapse:collapse;margin:0 0 24px;font-size:15px;display:block;overflow-x:auto}
+.prose table{width:100%;border-collapse:collapse;margin:0 0 24px;font-size:15px}
 .prose th,.prose td{border:1px solid hsl(var(--border));padding:9px 12px;text-align:left;vertical-align:top}
 .prose th{background:hsl(var(--muted));font-weight:600}
+/* On a phone a wide table becomes a sideways scroll that readers skip. Below
+   640px each row becomes its own card and each cell carries its column name,
+   so the data is read rather than swiped past. */
+@media (max-width:640px){
+  .prose table,.prose tbody,.prose tr,.prose td{display:block;width:100%}
+  .prose thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .prose tr{border:1px solid hsl(var(--border));border-radius:10px;margin:0 0 14px;
+    padding:4px 0;background:hsl(var(--card))}
+  .prose td{border:0;border-bottom:1px solid hsl(var(--border));padding:10px 14px}
+  .prose tr td:last-child{border-bottom:0}
+  .prose td::before{content:attr(data-label);display:block;font-size:11.5px;font-weight:600;
+    letter-spacing:.06em;text-transform:uppercase;color:hsl(var(--muted-foreground));margin-bottom:3px}
+  .prose td:empty{display:none}
+}
 .prose em{color:hsl(var(--muted-foreground))}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:36px 0 0}
 .tags a{font-size:13px;color:hsl(var(--muted-foreground));background:hsl(var(--muted));
   border-radius:999px;padding:5px 12px;text-decoration:none}
 .tags a:hover{color:hsl(var(--primary))}
+
+/* the short version */
+.keypoints{border:1px solid hsl(var(--border));border-left:3px solid hsl(var(--primary));
+  border-radius:10px;padding:22px 24px;margin:0 0 34px;background:hsl(var(--muted)/.55)}
+.keypoints h2{margin:0 0 12px;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  color:hsl(var(--muted-foreground));font-weight:600}
+.keypoints ul{margin:0;padding-left:20px}
+.keypoints li{margin:0 0 8px;font-size:16px;line-height:1.5}
+.keypoints li:last-child{margin-bottom:0}
+.keypoints .evnote{margin:14px 0 0;padding-top:13px;border-top:1px solid hsl(var(--border));
+  font-size:14px;color:hsl(var(--muted-foreground))}
+.tag.tier{background:transparent;border:1px solid hsl(var(--border));color:hsl(var(--muted-foreground))}
 
 /* commercial recommendation */
 .promo{border:1px solid hsl(var(--primary)/.35);background:hsl(var(--accent));
@@ -547,7 +590,7 @@ function buildIndex() {
 
 function buildPost(p) {
   const { body: rawProse, tags } = splitTags(p.bodyHtml);
-  const prose = normaliseLinks(rawProse);
+  const prose = labelTableCells(normaliseLinks(rawProse));
   const name = imageName(p.hero);
   const iso = new Date(p.date).toISOString().slice(0, 10);
 
@@ -558,7 +601,7 @@ function buildPost(p) {
       <a href="/?category=${encodeURIComponent(p.category)}">${esc(p.category)}</a>
     </nav>
     <div class="meta" style="display:flex;gap:10px;align-items:center;font-size:12.5px;margin:18px 0 0">
-      <span class="tag">${esc(p.category)}</span><span>${esc(p.readTime)}</span>
+      <span class="tag">${esc(p.category)}</span>${p.evidenceTier ? `<span class="tag tier">${esc(p.evidenceTier)}</span>` : ''}<span>${esc(p.readTime)}</span>
     </div>
     <h1>${esc(p.title)}</h1>
     <p class="dek">${esc(p.dek)}</p>
@@ -567,6 +610,11 @@ function buildPost(p) {
       <span><span class="n">${esc(p.author)}</span><br><span class="r">${esc(p.role)} · <time datetime="${iso}">${esc(p.date)}</time></span></span>
     </div>
     ${picture(name, p.heroAlt || p.title, { eager: true, sizes: '(max-width:760px) 100vw, 720px' })}
+    ${p.keyPoints && p.keyPoints.length ? `<section class="keypoints" aria-labelledby="kp">
+      <h2 id="kp">The short version</h2>
+      <ul>${p.keyPoints.map((k) => `<li>${esc(k)}</li>`).join('')}</ul>
+      ${p.evidenceNote ? `<p class="evnote"><strong>Evidence: ${esc(p.evidenceTier)}.</strong> ${esc(p.evidenceNote)}</p>` : ''}
+    </section>` : ''}
     <div class="prose">${prose}</div>
     ${tags.length ? `<div class="tags">${tags.map((t) => `<a href="/?q=${encodeURIComponent(t)}">#${esc(t)}</a>`).join('')}</div>` : ''}
   </article>
