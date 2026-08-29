@@ -279,6 +279,16 @@ article.post > picture img{border-radius:12px;border:1px solid hsl(var(--border)
   border-radius:999px;padding:5px 12px;text-decoration:none}
 .tags a:hover{color:hsl(var(--primary))}
 
+/* commercial recommendation */
+.promo{border:1px solid hsl(var(--primary)/.35);background:hsl(var(--accent));
+  border-radius:14px;padding:28px 26px;margin:52px 0 0}
+.promo .eyebrow{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:hsl(var(--accent-foreground));opacity:.85}
+.promo h2{margin:0 0 9px;font-size:21px;line-height:1.3;letter-spacing:-.018em;
+  font-weight:600;color:hsl(var(--accent-foreground))}
+.promo p{margin:0 0 18px;font-size:15.5px;color:hsl(var(--accent-foreground));opacity:.92;max-width:52ch}
+.promo .btn{font-size:15px;padding:11px 20px}
+
 /* subscribe */
 .subscribe{background:hsl(var(--muted));border:1px solid hsl(var(--border));
   border-radius:14px;padding:34px 28px;margin:64px 0;text-align:center}
@@ -369,6 +379,22 @@ ${body}
 </body>
 </html>`;
 }
+
+/**
+ * Commercial recommendation block, carried over from the original site. It
+ * sits between the article and the related links, which is where the reader
+ * has finished the piece and is most likely to act. rel="sponsored" declares
+ * the commercial relationship to search engines, and target="_blank" keeps the
+ * article open behind it.
+ */
+const clydeBlock = `
+<aside class="promo">
+  <p class="eyebrow">Recommended by ${BRAND}</p>
+  <h2>Research-grade peptides from Clyde Peptides</h2>
+  <p>Independent third-party tested, with certificates of analysis published for every batch.
+     Educational use only, not for human consumption.</p>
+  <a class="btn" href="https://clydepeptides.com/" target="_blank" rel="noopener noreferrer sponsored">Visit Clyde Peptides</a>
+</aside>`;
 
 const subscribeBlock = `
 <section class="subscribe" id="subscribe">
@@ -544,6 +570,7 @@ function buildPost(p) {
     <div class="prose">${prose}</div>
     ${tags.length ? `<div class="tags">${tags.map((t) => `<a href="/?q=${encodeURIComponent(t)}">#${esc(t)}</a>`).join('')}</div>` : ''}
   </article>
+  ${clydeBlock}
   <section class="related" aria-labelledby="related-h">
     <h2 id="related-h">Related reading</h2>
     <ul>
