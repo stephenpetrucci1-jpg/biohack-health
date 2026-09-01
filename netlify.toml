@@ -1,4 +1,6 @@
-# The site is prebuilt and committed as dist/, so Netlify only publishes it.
+# dist/ is gitignored and built by Netlify on each deploy, not committed.
+# publish is relative to the base directory (biohack-health), so it is "dist",
+# not "biohack-health/dist". Setting the latter publishes an empty folder.
 [build]
   publish = "dist"
   command = "npm install && node src/build.js"
