@@ -6,6 +6,10 @@
   command = "npm install && node src/build.js"
   functions = "netlify/functions"
 
+# Pin the runtime so a Netlify default bump cannot change the build.
+[build.environment]
+  NODE_VERSION = "22"
+
 # The page posts to /api/subscribe on every host; map it to the function here.
 [[redirects]]
   from = "/api/subscribe"
