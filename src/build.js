@@ -16,7 +16,14 @@ const ROOT = path.resolve(__dirname, '..');
 const DIST = path.join(ROOT, 'dist');
 const SITE = 'https://biohackhealth.uk';
 
-const posts = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/posts.json'), 'utf8'));
+const { loadMarkdownPosts } = require('./content.js');
+
+// The original six are HTML in posts.json; everything written since is
+// Markdown in content/. Both render identically from here on.
+const posts = [
+  ...loadMarkdownPosts(),
+  ...JSON.parse(fs.readFileSync(path.join(ROOT, 'src/posts.json'), 'utf8')),
+];
 const imagemap = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/imagemap.json'), 'utf8'));
 
 const BRAND = 'Biohack Health';
@@ -31,6 +38,24 @@ const BRAND = 'Biohack Health';
  * emitted.
  */
 const GOOGLE_VERIFICATION = process.env.GOOGLE_VERIFICATION || '';
+
+/**
+ * Cloudflare Web Analytics token. Cookieless, so no consent banner is needed,
+ * and the beacon is about 1.5 KB. Set CF_ANALYTICS_TOKEN in the build
+ * environment to switch it on; leave it unset and no script is emitted.
+ */
+const CF_ANALYTICS_TOKEN = process.env.CF_ANALYTICS_TOKEN || '';
+
+/** Where the shop link points, before per-article campaign tagging. */
+const SHOP_URL = 'https://clydepeptides.com/';
+
+/**
+ * Tag the shop link per article so orders in HighLevel can be traced back to
+ * the piece that produced them. Without this the blog is unattributable and
+ * there is no way to tell which writing sells.
+ */
+const shopLink = (slug) =>
+  `${SHOP_URL}?utm_source=biohackhealth&utm_medium=blog&utm_campaign=${encodeURIComponent(slug)}`;
 const TAGLINE = 'Peptide Science, Research and Recovery';
 const DESCRIPTION =
   'An educational journal covering peptide science, GLP-1 and metabolic research, recovery protocols, and the regulatory landscape.';
@@ -396,6 +421,7 @@ ${article ? `<meta property="article:published_time" content="${article.publishe
 <meta name="author" content="${esc(article.author)}">` : ''}
 <style>${CSS}</style>
 ${jsonLd.length ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
+${CF_ANALYTICS_TOKEN ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${CF_ANALYTICS_TOKEN}"}'></script>` : ''}
 </head>
 <body>
 <header class="site"><div class="${wide ? 'wrap-wide' : 'wrap'} bar">
@@ -430,13 +456,14 @@ ${body}
  * the commercial relationship to search engines, and target="_blank" keeps the
  * article open behind it.
  */
-const clydeBlock = `
+const clydeBlock = (slug) => `
 <aside class="promo">
   <p class="eyebrow">Recommended by ${BRAND}</p>
-  <h2>Research-grade peptides from Clyde Peptides</h2>
-  <p>Independent third-party tested, with certificates of analysis published for every batch.
-     Educational use only, not for human consumption.</p>
-  <a class="btn" href="https://clydepeptides.com/" target="_blank" rel="noopener noreferrer sponsored">Visit Clyde Peptides</a>
+  <h2>Purity is the variable you can control</h2>
+  <p>Evidence quality is decided by the literature. What is actually in the vial is decided by
+     your supplier. Clyde Peptides publishes a third-party certificate of analysis for every
+     batch. Educational use only, not for human consumption.</p>
+  <a class="btn" href="${shopLink(slug)}" target="_blank" rel="noopener noreferrer sponsored">Visit Clyde Peptides</a>
 </aside>`;
 
 const subscribeBlock = `
@@ -618,7 +645,7 @@ function buildPost(p) {
     <div class="prose">${prose}</div>
     ${tags.length ? `<div class="tags">${tags.map((t) => `<a href="/?q=${encodeURIComponent(t)}">#${esc(t)}</a>`).join('')}</div>` : ''}
   </article>
-  ${clydeBlock}
+  ${clydeBlock(p.slug)}
   <section class="related" aria-labelledby="related-h">
     <h2 id="related-h">Related reading</h2>
     <ul>
