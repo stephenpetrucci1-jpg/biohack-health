@@ -9,8 +9,8 @@ role: Research Editor
 date: '2026-09-05'
 evidenceTier: Approved, narrow indication
 evidenceNote: Large placebo-controlled trials exist and the compound is approved, but only for HIV-associated lipodystrophy. No approval or controlled trial supports use for body composition in healthy adults.
-hero: ipamorelin-tesamorelin-cjc-1295
-heroAlt: Laboratory setting representing growth hormone releasing hormone research
+hero: tesamorelin-approval-scope
+heroAlt: Diagram of what the tesamorelin approval covers. A short approved band for excess abdominal fat in HIV-associated lipodystrophy sits beside a much longer unapproved band for body composition, recovery or sleep in healthy trained adults, above the figures two Phase 3 trials, FDA approval in 2010 as Egrifta, and one approved indication.
 tags:
   - Tesamorelin
   - GHRH
