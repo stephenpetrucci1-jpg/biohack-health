@@ -28,7 +28,7 @@ function adminConfig(root, { categories, authors }) {
     // Saves land as drafts first, so nothing reaches the site until it is
     // explicitly published from the editor.
     publish_mode: 'editorial_workflow',
-    media_folder: 'biohack-health/public/img/uploads',
+    media_folder: 'public/img/uploads',
     public_folder: '/img/uploads',
     site_url: 'https://biohackhealth.uk',
     logo_url: 'https://biohackhealth.uk/favicon.svg',
@@ -37,7 +37,7 @@ function adminConfig(root, { categories, authors }) {
         name: 'articles',
         label: 'Articles',
         label_singular: 'Article',
-        folder: 'biohack-health/content',
+        folder: 'content',
         create: true,
         slug: '{{slug}}',
         extension: 'md',
