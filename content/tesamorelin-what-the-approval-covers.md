@@ -2,7 +2,7 @@
 title: 'Tesamorelin: What the Approval Actually Covers'
 seoTitle: 'Tesamorelin Evidence: What the Trials Actually Showed'
 dek: Tesamorelin is one of the few peptides in this space with a genuine regulatory approval behind it. The approval is for a population most people reading about it do not belong to.
-description: Tesamorelin has real Phase 3 data and an FDA approval. Both are narrower than the bodybuilding coverage suggests.
+description: Tesamorelin has real Phase 3 data and an FDA approval from 2010. Both are far narrower than the bodybuilding coverage suggests.
 category: Research
 author: Marcus Lin
 role: Research Editor

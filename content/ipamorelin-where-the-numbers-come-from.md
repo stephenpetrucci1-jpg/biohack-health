@@ -1,6 +1,6 @@
 ---
 title: "Ipamorelin Dosage Guide: How Much to Take, When to Take It & What to Expect"
-seoTitle: "Ipamorelin Dosage Guide: Optimal Protocols for Recovery and Muscle Growth"
+seoTitle: "Ipamorelin Dosage Guide: What the Evidence Supports"
 dek: Ipamorelin is one of the most widely discussed growth hormone secretagogues
   in the peptide space. But dosing recommendations vary considerably depending
   on the protocol, intended goal and whether it is used alone or alongside
