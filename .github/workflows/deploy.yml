@@ -1,0 +1,46 @@
+# Build here, not on Netlify.
+#
+# Netlify's free plan meters build minutes, and once they run out every deploy
+# is skipped with "account credit usage exceeded" - the commit lands but the
+# site never updates. GitHub Actions minutes are unmetered on public repos, so
+# the site is built here and the finished dist/ is uploaded to Netlify as a
+# pre-built deploy, which costs no Netlify build minutes at all.
+#
+# Needs one repository secret: NETLIFY_AUTH_TOKEN.
+name: Build and deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - run: npm ci
+
+      - run: node src/build.js
+
+      - name: Deploy to Netlify
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: 9a129a9d-a969-403b-a7d2-7abed6271ee1
+        run: >
+          npx --yes netlify-cli@27 deploy
+          --prod
+          --dir dist
+          --functions netlify/functions
+          --site "$NETLIFY_SITE_ID"
+          --message "${{ github.event.head_commit.message }}"
