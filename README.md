@@ -114,7 +114,58 @@ Create the token in the sub-account under Settings, Private Integrations.
 Subscribers arrive as contacts tagged `biohackhealth-subscriber` with source
 `biohackhealth.uk`, so a workflow can trigger on the tag.
 
-## Adding a post
+## Adding a post (Markdown)
+
+Two commands.
+
+```bash
+# 1. drop the hero image into images-in/ then
+npm run images        # converts to AVIF + WebP at both widths, prints the hero: value
+
+# 2. write content/your-slug.md, then
+npm run build
+```
+
+The filename becomes the URL: `content/bpc-157-tendons.md` publishes at
+`/blog/bpc-157-tendons/`. Front matter:
+
+```
+---
+title: The headline on the page
+seoTitle: The shorter one for search results, under 60 characters
+dek: One sentence under the headline.
+description: The search result description, under 155 characters.
+category: Research
+author: Dr. Elena Marsh
+role: Biochemist
+date: 2026-09-05
+evidenceTier: Preclinical
+evidenceNote: One sentence qualifying the evidence level.
+hero: bpc-157-tendons
+heroAlt: What the image actually shows.
+tags: BPC-157, Tendons, Recovery
+keyPoints:
+  - First thing a reader needs.
+  - Second thing.
+  - Third thing.
+---
+
+Body in Markdown. ## for headings, pipe tables, normal links.
+```
+
+Optional: `readTime` and `initials` are worked out automatically if omitted.
+Everything else in the list is required.
+
+## Analytics
+
+Set `CF_ANALYTICS_TOKEN` in the Netlify environment and the Cloudflare Web
+Analytics beacon is emitted on every page. Leave it unset and no script is
+added at all. Cookieless, so no consent banner is required.
+
+The shop link on each article carries UTM tags naming the article, so orders
+in HighLevel can be traced to the piece that produced them.
+
+## Adding a post (the original six)
 
 Add an entry to `src/posts.json` and rebuild. Fields: `slug`, `title`, `dek`,
 `description`, `category`, `readTime`, `author`, `initials`, `role`, `date`,
