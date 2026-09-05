@@ -1,17 +1,21 @@
 ---
-title: Ipamorelin: Where the Dosing Numbers Come From
-seoTitle: Ipamorelin Dosing: What the Research Actually Supports
+title: 'Ipamorelin: Where the Dosing Numbers Come From'
+seoTitle: 'Ipamorelin Dosing: What the Research Actually Supports'
 dek: The microgram figures, split schedules and cycle lengths circulating online read like clinical protocols. Almost none of them come from a trial.
 description: Ipamorelin's selectivity is well documented. The dosing protocols attached to it are convention, not trial data. Here is the difference.
 category: Research
 author: Dr. Elena Marsh
 role: Biochemist
-date: 2026-09-06
+date: '2026-09-06'
 evidenceTier: Preclinical, development discontinued
 evidenceNote: The receptor pharmacology is well characterised. Human development was abandoned before any dose-ranging programme in the population now using it.
 hero: ipamorelin-tesamorelin-cjc-1295
 heroAlt: Laboratory setting representing growth hormone secretagogue research
-tags: Ipamorelin, GHS-R1a, Growth Hormone, Dosing
+tags:
+  - Ipamorelin
+  - GHS-R1a
+  - Growth Hormone
+  - Dosing
 keyPoints:
   - The selectivity claim is the one part that holds up. Ipamorelin releases growth hormone with little effect on cortisol or prolactin, and that is well documented.
   - The microgram protocols circulating online are not derived from any dose-ranging trial in healthy trained adults. No such trial exists.

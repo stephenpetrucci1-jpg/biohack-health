@@ -1,10 +1,8 @@
 /**
  * Markdown posts.
  *
- * The six original articles live in src/posts.json as HTML, because that is
- * how they came off the old site and their markup is worth preserving exactly.
- * Everything written from now on goes in content/ as Markdown, which is far
- * easier to write and edit. The build reads both and treats them identically.
+ * Every article is a Markdown file in content/. One file per article, named
+ * after its URL slug. The build reads this directory and nothing else.
  *
  * A post looks like this:
  *
@@ -35,38 +33,24 @@
 const fs = require('fs');
 const path = require('path');
 const { marked } = require('marked');
+const yaml = require('js-yaml');
 
 const CONTENT_DIR = path.resolve(__dirname, '..', 'content');
 
-/** Minimal front matter: scalars, comma lists, and "- " bullet lists. */
+/** Split the YAML front matter block from the Markdown body. */
 function parseFrontMatter(raw, file) {
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) throw new Error(`${file}: missing front matter block`);
-  const meta = {};
-  let currentList = null;
-
-  for (const line of m[1].split(/\r?\n/)) {
-    if (!line.trim()) continue;
-    const bullet = line.match(/^\s*-\s+(.*)$/);
-    if (bullet && currentList) {
-      meta[currentList].push(bullet[1].trim());
-      continue;
-    }
-    const kv = line.match(/^([A-Za-z][A-Za-z0-9_]*)\s*:\s*(.*)$/);
-    if (!kv) continue;
-    const [, key, value] = kv;
-    if (value === '') {
-      meta[key] = [];
-      currentList = key;
-    } else {
-      meta[key] = value.trim();
-      currentList = null;
-    }
+  let meta;
+  try {
+    meta = yaml.load(m[1]) || {};
+  } catch (e) {
+    throw new Error(`${file}: front matter is not valid YAML - ${e.message}`);
   }
   return { meta, body: m[2] };
 }
 
-const REQUIRED = ['title', 'dek', 'category', 'author', 'role', 'date', 'hero'];
+const REQUIRED = ['title', 'dek', 'category', 'author', 'role', 'date'];
 
 function loadOne(file) {
   const slug = path.basename(file, '.md');
@@ -89,10 +73,16 @@ function loadOne(file) {
     initials: meta.initials || meta.author.split(/\s+/).map((w) => w[0]).join('').slice(0, 2).toUpperCase(),
     // Stored as a plain date so the build can format and stamp it consistently.
     date: new Date(meta.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }),
+    // Kept raw so sorting never depends on parsing the display string back.
+    isoDate: meta.date instanceof Date ? meta.date.toISOString().slice(0, 10) : String(meta.date),
+    // Lower runs first within a day. Older imports carry one; new posts need not.
+    order: meta.order === undefined ? Number.MAX_SAFE_INTEGER : Number(meta.order),
     readTime: meta.readTime || `${Math.max(1, Math.round(words / 220))} min read`,
     evidenceTier: meta.evidenceTier || '',
     evidenceNote: meta.evidenceNote || '',
     hero: meta.hero,
+    // Set when the cover image was uploaded through the editor at /admin.
+    heroImage: meta.heroImage || '',
     heroAlt: meta.heroAlt || meta.title,
     tags: Array.isArray(meta.tags) ? meta.tags : String(meta.tags || '').split(',').map((t) => t.trim()).filter(Boolean),
     keyPoints: Array.isArray(meta.keyPoints) ? meta.keyPoints : [],
@@ -101,14 +91,14 @@ function loadOne(file) {
   };
 }
 
-/** Every Markdown post, newest first. Returns [] when content/ is empty. */
+/** Every Markdown post, newest first, ties broken by the order key. */
 function loadMarkdownPosts() {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs
     .readdirSync(CONTENT_DIR)
     .filter((f) => f.endsWith('.md'))
     .map((f) => loadOne(path.join(CONTENT_DIR, f)))
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
+    .sort((a, b) => new Date(b.isoDate) - new Date(a.isoDate) || a.order - b.order);
 }
 
 module.exports = { loadMarkdownPosts };

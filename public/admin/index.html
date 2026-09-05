@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Biohack Health editor</title>
+</head>
+<body>
+<!-- Netlify Identity handles the login. Decap reads and writes the Markdown
+     files in content/ through Git Gateway, so every save is a real commit and
+     Netlify rebuilds the site from it. -->
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script src="https://unpkg.com/decap-cms@3.8.4/dist/decap-cms.js"></script>
+<script>
+  /* Land back on the editor rather than the site after signing in. */
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('init', function (user) {
+      if (!user) window.netlifyIdentity.on('login', function () { document.location.href = '/admin/'; });
+    });
+  }
+</script>
+</body>
+</html>

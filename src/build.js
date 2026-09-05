@@ -1,7 +1,7 @@
 /**
  * Biohack Health static site generator.
  *
- * Reads src/posts.json and writes a fully static dist/. No client framework,
+ * Reads the Markdown files in content/ and writes a fully static dist/. No client framework,
  * no hydration: every page ships finished HTML so the content is there on
  * first paint and readable with JavaScript switched off. The only script is a
  * few lines for the category filter and the subscribe form.
@@ -17,13 +17,9 @@ const DIST = path.join(ROOT, 'dist');
 const SITE = 'https://biohackhealth.uk';
 
 const { loadMarkdownPosts } = require('./content.js');
+const { writeAdminConfig } = require('./adminconfig.js');
 
-// The original six are HTML in posts.json; everything written since is
-// Markdown in content/. Both render identically from here on.
-const posts = [
-  ...loadMarkdownPosts(),
-  ...JSON.parse(fs.readFileSync(path.join(ROOT, 'src/posts.json'), 'utf8')),
-];
+const posts = loadMarkdownPosts();
 const imagemap = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/imagemap.json'), 'utf8'));
 
 const BRAND = 'Biohack Health';
@@ -107,6 +103,32 @@ function picture(name, alt, { eager = false, sizes = '(max-width: 760px) 100vw, 
   <img src="/img/${name}.webp" alt="${esc(alt)}" width="1376" height="768" loading="${load}" decoding="async">
 </picture>`;
 }
+
+/**
+ * Cover images uploaded through the editor at /admin have not been through the
+ * sharp pass in src/images.js, so they are served through Netlify's image CDN,
+ * which resizes and re-encodes them on the fly. The markup is the same shape as
+ * picture() so the layout does not care which kind of image a post has.
+ */
+function uploadedPicture(src, alt, { eager = false, sizes = '(max-width: 760px) 100vw, 720px' } = {}) {
+  const load = eager ? 'eager" fetchpriority="high' : 'lazy';
+  const cdn = (w, fm) => `/.netlify/images?url=${encodeURIComponent(src)}&w=${w}&fm=${fm}`;
+  return `<picture>
+  <source type="image/avif" srcset="${cdn(688, 'avif')} 688w, ${cdn(1376, 'avif')} 1376w" sizes="${sizes}">
+  <source type="image/webp" srcset="${cdn(688, 'webp')} 688w, ${cdn(1376, 'webp')} 1376w" sizes="${sizes}">
+  <img src="${cdn(1376, 'webp')}" alt="${esc(alt)}" width="1376" height="768" loading="${load}" decoding="async">
+</picture>`;
+}
+
+/** A post's cover image, whichever of the two kinds it has. */
+function heroPicture(post, alt, opts) {
+  return post.heroImage
+    ? uploadedPicture(post.heroImage, alt, opts)
+    : picture(imageName(post.hero), alt, opts);
+}
+
+/** Social-card URL. Library images are names; uploads are site-root paths. */
+const ogUrl = (v) => (/^\//.test(v) ? SITE + v : `${SITE}/img/${v}.webp`);
 
 const CATEGORIES = [...new Set(posts.map((p) => p.category))];
 
@@ -405,7 +427,7 @@ ${GOOGLE_VERIFICATION ? `<meta name="google-site-verification" content="${esc(GO
 <meta property="og:description" content="${esc(description)}">
 <meta property="og:type" content="${wide ? 'website' : 'article'}">
 <meta property="og:url" content="${canonical}">
-<meta property="og:image" content="${SITE}/img/${ogImage}.webp">
+<meta property="og:image" content="${ogUrl(ogImage)}">
 <meta property="og:image:width" content="1376">
 <meta property="og:image:height" content="768">
 <meta property="og:image:alt" content="${esc(title)}">
@@ -413,7 +435,7 @@ ${GOOGLE_VERIFICATION ? `<meta name="google-site-verification" content="${esc(GO
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
-<meta name="twitter:image" content="${SITE}/img/${ogImage}.webp">
+<meta name="twitter:image" content="${ogUrl(ogImage)}">
 ${article ? `<meta property="article:published_time" content="${article.published}">
 <meta property="article:modified_time" content="${article.published}">
 <meta property="article:author" content="${esc(article.author)}">
@@ -479,6 +501,16 @@ const subscribeBlock = `
   <p class="note" id="sub-note" role="status" aria-live="polite"></p>
 </section>
 <script>
+/* Netlify Identity invite and password-reset links land on the site root with
+   a token in the hash. The widget is only fetched when one is present, so
+   ordinary visitors never download it. */
+(function(){
+  if(!/^#(invite_token|recovery_token|confirmation_token)=/.test(location.hash)) return;
+  var s=document.createElement('script');
+  s.src='https://identity.netlify.com/v1/netlify-identity-widget.js';
+  s.onload=function(){ window.netlifyIdentity.on('login', function(){ location.href='/admin/'; }); };
+  document.head.appendChild(s);
+})();
 (function(){
   var f=document.getElementById('sub'); if(!f) return;
   var note=document.getElementById('sub-note'), btn=f.querySelector('button');
@@ -508,10 +540,9 @@ const subscribeBlock = `
 /* ------------------------------------------------------------------ */
 
 function cardFor(p, first) {
-  const name = imageName(p.hero);
   return `<a class="card" href="/blog/${p.slug}/" data-category="${esc(p.category)}"
   data-search="${esc((p.title + ' ' + p.dek + ' ' + p.category + ' ' + p.author).toLowerCase())}">
-  ${picture(name, p.title, {
+  ${heroPicture(p, p.title, {
     eager: first,
     sizes: first ? '(max-width:900px) 100vw, 520px' : '(max-width:900px) 100vw, 380px',
   })}
@@ -618,7 +649,6 @@ function buildIndex() {
 function buildPost(p) {
   const { body: rawProse, tags } = splitTags(p.bodyHtml);
   const prose = labelTableCells(normaliseLinks(rawProse));
-  const name = imageName(p.hero);
   const iso = new Date(p.date).toISOString().slice(0, 10);
 
   const body = `<main class="wrap">
@@ -636,7 +666,7 @@ function buildPost(p) {
       <span class="avatar">${esc(p.initials)}</span>
       <span><span class="n">${esc(p.author)}</span><br><span class="r">${esc(p.role)} · <time datetime="${iso}">${esc(p.date)}</time></span></span>
     </div>
-    ${picture(name, p.heroAlt || p.title, { eager: true, sizes: '(max-width:760px) 100vw, 720px' })}
+    ${heroPicture(p, p.heroAlt || p.title, { eager: true, sizes: '(max-width:760px) 100vw, 720px' })}
     ${p.keyPoints && p.keyPoints.length ? `<section class="keypoints" aria-labelledby="kp">
       <h2 id="kp">The short version</h2>
       <ul>${p.keyPoints.map((k) => `<li>${esc(k)}</li>`).join('')}</ul>
@@ -664,7 +694,7 @@ function buildPost(p) {
       '@type': 'BlogPosting',
       headline: p.title,
       description: p.dek,
-      image: `${SITE}/img/${name}.webp`,
+      image: ogUrl(p.heroImage || imageName(p.hero)),
       datePublished: iso,
       dateModified: iso,
       author: { '@type': 'Person', name: p.author, jobTitle: p.role },
@@ -695,7 +725,7 @@ function buildPost(p) {
     title: pageTitle(p),
     description: clamp(p.description || p.dek, 155),
     canonical: `${SITE}/blog/${p.slug}/`,
-    ogImage: name,
+    ogImage: p.heroImage || imageName(p.hero),
     article: { published: iso, author: p.author, section: p.category },
     jsonLd, body,
   }));
@@ -712,7 +742,7 @@ function buildFeeds() {
     urls.map((u) => `  <url><loc>${u.loc}</loc>${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}<changefreq>${u.freq}</changefreq><priority>${u.pri}</priority></url>`).join('\n') +
     `\n</urlset>\n`);
 
-  write('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n`);
+  write('robots.txt', `User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: ${SITE}/sitemap.xml\n`);
 
   write('rss.xml',
     `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0"><channel>\n` +
@@ -755,6 +785,10 @@ copyDir(path.join(ROOT, 'public'), DIST);
 buildIndex();
 posts.forEach(buildPost);
 buildFeeds();
+writeAdminConfig(ROOT, DIST, {
+  categories: CATEGORIES,
+  authors: [...new Set(posts.map((p) => p.author))].sort(),
+});
 
 let bytes = 0, files = 0;
 (function walk(d) {
