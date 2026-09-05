@@ -44,7 +44,7 @@ const GOOGLE_VERIFICATION = process.env.GOOGLE_VERIFICATION || '';
  * and the beacon is about 1.5 KB. Set CF_ANALYTICS_TOKEN in the build
  * environment to switch it on; leave it unset and no script is emitted.
  */
-const CF_ANALYTICS_TOKEN = process.env.CF_ANALYTICS_TOKEN || '';
+const CF_ANALYTICS_TOKEN = process.env.CF_ANALYTICS_TOKEN || 'e6c695df3a9045479f7704238a0c9329';
 
 /** Where the shop link points, before per-article campaign tagging. */
 const SHOP_URL = 'https://clydepeptides.com/';
@@ -421,7 +421,7 @@ ${article ? `<meta property="article:published_time" content="${article.publishe
 <meta name="author" content="${esc(article.author)}">` : ''}
 <style>${CSS}</style>
 ${jsonLd.length ? `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>` : ''}
-${CF_ANALYTICS_TOKEN ? `<script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${CF_ANALYTICS_TOKEN}"}'></script>` : ''}
+${CF_ANALYTICS_TOKEN ? `<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"${CF_ANALYTICS_TOKEN}"}'></script>` : ''}
 </head>
 <body>
 <header class="site"><div class="${wide ? 'wrap-wide' : 'wrap'} bar">
