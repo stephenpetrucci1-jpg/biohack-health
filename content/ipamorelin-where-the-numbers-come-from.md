@@ -9,8 +9,8 @@ role: Biochemist
 date: '2026-09-06'
 evidenceTier: Preclinical, development discontinued
 evidenceNote: The receptor pharmacology is well characterised. Human development was abandoned before any dose-ranging programme in the population now using it.
-hero: ipamorelin-tesamorelin-cjc-1295
-heroAlt: Laboratory setting representing growth hormone secretagogue research
+hero: ipamorelin-evidence-base
+heroAlt: Chart rating the evidence for ipamorelin by domain. Receptor selectivity is high, the growth hormone pulse in humans is moderate, and optimal dose in trained adults, body composition and long-term safety are all rated none.
 tags:
   - Ipamorelin
   - GHS-R1a

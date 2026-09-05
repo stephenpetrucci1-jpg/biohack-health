@@ -12,8 +12,8 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 
-const IN = path.resolve(__dirname, 'images-in');
-const OUT = path.resolve(__dirname, 'public', 'img');
+const IN = path.resolve(__dirname, '..', 'images-in');
+const OUT = path.resolve(__dirname, '..', 'public', 'img');
 
 (async () => {
   if (!fs.existsSync(IN)) return console.log('no images-in/ folder, nothing to do');
