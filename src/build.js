@@ -63,8 +63,33 @@ const DESCRIPTION =
 const esc = (s = '') =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
-/** Original CDN url -> local image basename. */
-const imageName = (url) => imagemap[String(url).split('/').pop().replace('.png', '')] || 'brand-og';
+/** Every image basename that public/img actually holds. */
+const IMAGES = new Set(
+  fs.existsSync(path.join(ROOT, 'public/img'))
+    ? fs.readdirSync(path.join(ROOT, 'public/img'))
+        .filter((f) => f.endsWith('.webp'))
+        .map((f) => f.replace(/-688\.webp$/, '').replace(/\.webp$/, ''))
+    : []
+);
+
+/**
+ * Resolve a post's `hero` to an image basename.
+ *
+ * Posts written since the migration name the image directly. The originals
+ * carried a CDN url from the old site, so those still go through imagemap.
+ * A hero naming an image that does not exist falls back to the brand card,
+ * and says so, because silently serving the wrong picture is how every
+ * article ended up with the same one.
+ */
+const missingHeroes = new Set();
+function imageName(hero) {
+  const raw = String(hero || '');
+  if (IMAGES.has(raw)) return raw;
+  const mapped = imagemap[raw.split('/').pop().replace('.png', '')];
+  if (mapped && IMAGES.has(mapped)) return mapped;
+  if (raw) missingHeroes.add(raw);
+  return 'brand-og';
+}
 
 /** Trailing hashtag block is markup, not prose: pull it out and parse it. */
 /**
@@ -797,6 +822,10 @@ let bytes = 0, files = 0;
     if (e.isDirectory()) walk(f); else { bytes += fs.statSync(f).size; files++; }
   }
 })(DIST);
+if (missingHeroes.size) {
+  console.log(`\n  no image found for: ${[...missingHeroes].join(', ')}`);
+  console.log('  those posts fall back to the brand card. Run `npm run images` or fix the hero field.\n');
+}
 console.log(`built ${files} files, ${(bytes / 1024).toFixed(0)} KB total`);
 console.log(`  index.html      ${(fs.statSync(path.join(DIST, 'index.html')).size / 1024).toFixed(1)} KB`);
 console.log(`  a post page     ${(fs.statSync(path.join(DIST, 'blog', posts[0].slug, 'index.html')).size / 1024).toFixed(1)} KB`);
