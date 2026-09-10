@@ -671,6 +671,50 @@ function buildIndex() {
   }));
 }
 
+/**
+ * Pull the FAQ section out of an article for FAQPage markup.
+ *
+ * Google shows these as expandable questions under the search result, which is
+ * the single biggest click-through win available to a page that already ranks.
+ * It reads the rendered prose rather than the source, so it works whether the
+ * article came from Markdown or from the old site's HTML.
+ *
+ * Returns [] unless the section has at least two question headings, since a
+ * lone question is not worth marking up and Google ignores it anyway.
+ */
+function faqFrom(prose) {
+  const section = prose.match(/<h2[^>]*>\s*Frequently\s+[Aa]sked[^<]*<\/h2>([\s\S]*?)(?=<h2|$)/);
+  if (!section) return [];
+
+  const pairs = [];
+  // Two shapes appear across the articles: a question as an h3, and a question
+  // bolded at the head of its own paragraph.
+  const patterns = [
+    /<h3[^>]*>([\s\S]*?)<\/h3>([\s\S]*?)(?=<h3|$)/g,
+    /<p>\s*<strong>([\s\S]*?)<\/strong>([\s\S]*?)<\/p>/g,
+  ];
+  for (const re of patterns) {
+    let m;
+    while ((m = re.exec(section[1]))) {
+      const question = stripTags(m[1]);
+      const answer = stripTags(m[2]);
+      if (question && answer) pairs.push({ question, answer });
+    }
+    if (pairs.length) break;
+  }
+  return pairs.length >= 2 ? pairs : [];
+}
+
+/** Markup text: tags out, entities back to characters, whitespace collapsed. */
+function stripTags(html) {
+  return html
+    .replace(/<[^>]+>/g, ' ')
+    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
+    .replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&nbsp;/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 function buildPost(p) {
   const { body: rawProse, tags } = splitTags(p.bodyHtml);
   const prose = labelTableCells(normaliseLinks(rawProse));
@@ -745,6 +789,19 @@ function buildPost(p) {
       ],
     },
   ];
+
+  const faq = faqFrom(prose);
+  if (faq.length) {
+    jsonLd.push({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faq.map((f) => ({
+        '@type': 'Question',
+        name: f.question,
+        acceptedAnswer: { '@type': 'Answer', text: f.answer },
+      })),
+    });
+  }
 
   write(`blog/${p.slug}/index.html`, layout({
     title: pageTitle(p),
