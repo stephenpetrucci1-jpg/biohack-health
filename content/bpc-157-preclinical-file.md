@@ -4,8 +4,8 @@ seoTitle: 'BPC-157 Evidence: Deep Preclinical, No Human Trials'
 dek: No completed modern controlled human trial exists. Everything describing efficacy comes from animal models or cell culture. Both of these facts are true at once.
 description: No completed modern controlled human trial exists. Everything describing efficacy comes from animal models or cell culture. Both of these facts are true at once.
 category: Research
-author: Dr. Elena Marsh
-role: Biochemist
+author: Biohack Health
+role: Editorial
 date: '2026-08-25'
 order: 70
 evidenceTier: Preclinical

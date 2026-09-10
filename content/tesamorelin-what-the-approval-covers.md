@@ -4,8 +4,8 @@ seoTitle: 'Tesamorelin Evidence: What the Trials Actually Showed'
 dek: Tesamorelin is one of the few peptides in this space with a genuine regulatory approval behind it. The approval is for a population most people reading about it do not belong to.
 description: Tesamorelin has real Phase 3 data and an FDA approval from 2010. Both are far narrower than the bodybuilding coverage suggests.
 category: Research
-author: Marcus Lin
-role: Research Editor
+author: Biohack Health
+role: Editorial
 date: '2026-09-05'
 evidenceTier: Approved, narrow indication
 evidenceNote: Large placebo-controlled trials exist and the compound is approved, but only for HIV-associated lipodystrophy. No approval or controlled trial supports use for body composition in healthy adults.

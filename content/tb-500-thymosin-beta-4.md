@@ -4,8 +4,8 @@ seoTitle: 'TB-500 vs Thymosin Beta-4: What the Evidence Says'
 dek: Most writing about TB-500 cites research about Thymosin Beta-4. Those are not the same thing, and the gap between them is the most important fact about this compound.
 description: Most writing about TB-500 cites research about Thymosin Beta-4. Those are not the same thing, and the gap between them is the most important fact about this compound.
 category: Research
-author: Dr. Elena Marsh
-role: Biochemist
+author: Biohack Health
+role: Editorial
 date: '2026-08-25'
 order: 30
 evidenceTier: Preclinical

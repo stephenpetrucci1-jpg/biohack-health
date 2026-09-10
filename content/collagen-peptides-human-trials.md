@@ -4,8 +4,8 @@ seoTitle: 'Collagen Peptides: What Human Trials Actually Show'
 dek: Unusually for this space, the core findings come from controlled trials in people. Effect sizes are modest, and the protocol matters more than the product.
 description: Unusually for this space, the core findings come from controlled trials in people. Effect sizes are modest, and the protocol matters more than the product.
 category: Research
-author: Marcus Lin
-role: Research Editor
+author: Biohack Health
+role: Editorial
 date: '2026-08-25'
 order: 50
 evidenceTier: Human RCT

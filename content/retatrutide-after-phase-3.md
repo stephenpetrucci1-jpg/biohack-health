@@ -4,8 +4,8 @@ seoTitle: 'Retatrutide Phase 3 Results: What the Data Showed'
 dek: Between December 2025 and July 2026, four Phase 3 trials reported topline results. The compound moved from a promising signal to a late-stage asset with data across obesity, diabetes, and CVD.
 description: Between December 2025 and July 2026, four Phase 3 trials reported topline results. The compound moved from a promising signal to a late-stage asset with data across obesity, diabetes, and CVD.
 category: Research
-author: Marcus Lin
-role: Research Editor
+author: Biohack Health
+role: Editorial
 date: '2026-08-25'
 order: 20
 evidenceTier: Phase 3

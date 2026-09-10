@@ -4,8 +4,8 @@ seoTitle: GLP-1 Agonists and Metabolic Flexibility
 dek: The open question isn't whether these drugs work—it's what they leave behind. Do they improve underlying flexibility or just reduce the load on a broken system?
 description: The open question isn't whether these drugs work—it's what they leave behind. Do they improve underlying flexibility or just reduce the load on a broken system?
 category: Research
-author: Dr. Priya Nair
-role: Pharmacologist
+author: Biohack Health
+role: Editorial
 date: '2026-08-25'
 order: 60
 evidenceTier: Phase 3 and beyond

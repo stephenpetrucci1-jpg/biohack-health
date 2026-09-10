@@ -10,8 +10,8 @@ description: Learn about commonly used Ipamorelin dosing protocols, injection
   timing, cycle lengths, CJC-1295 combinations, potential benefits, side effects
   and safety considerations.
 category: Research
-author: Dr. Elena Marsh
-role: Biochemist
+author: Biohack Health
+role: Editorial
 date: 2026-09-06
 hero: ipamorelin-evidence-base
 heroAlt: Chart rating the evidence for ipamorelin by domain. Receptor

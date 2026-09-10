@@ -766,7 +766,12 @@ function buildPost(p) {
       image: ogUrl(p.heroImage || imageName(p.hero)),
       datePublished: iso,
       dateModified: iso,
-      author: { '@type': 'Person', name: p.author, jobTitle: p.role },
+      // The byline is the publication itself, so the author is the organisation
+      // rather than a person. Claiming a named individual that does not exist
+      // is exactly what Google's health-content guidelines look for.
+      author: p.author === BRAND
+        ? { '@type': 'Organization', name: BRAND, url: SITE }
+        : { '@type': 'Person', name: p.author, jobTitle: p.role },
       publisher: {
         '@type': 'Organization',
         name: BRAND,

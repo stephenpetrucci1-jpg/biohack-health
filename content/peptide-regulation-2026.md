@@ -4,8 +4,8 @@ seoTitle: 'Peptide Regulation 2026: What Actually Changed'
 dek: 'The regulatory landscape shifted through three separate mechanisms: a compounding decision in 2023, shortage resolutions in 2024-25, and an enforcement campaign in 2026.'
 description: 'The regulatory landscape shifted through three separate mechanisms: a compounding decision in 2023, shortage resolutions in 2024-25, and an enforcement campaign in 2026.'
 category: News
-author: Dr. Priya Nair
-role: Pharmacologist
+author: Biohack Health
+role: Editorial
 date: '2026-08-25'
 order: 40
 evidenceTier: Regulatory
