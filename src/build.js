@@ -395,14 +395,15 @@ article.post > picture img{border-radius:12px;border:1px solid hsl(var(--border)
 .tag.tier{background:transparent;border:1px solid hsl(var(--border));color:hsl(var(--muted-foreground))}
 
 /* commercial recommendation */
-.promo{border:1px solid hsl(var(--primary)/.35);background:hsl(var(--accent));
-  border-radius:14px;padding:28px 26px;margin:52px 0 0}
-.promo .eyebrow{margin:0 0 8px;font-size:12px;font-weight:600;letter-spacing:.09em;
-  text-transform:uppercase;color:hsl(var(--accent-foreground));opacity:.85}
-.promo h2{margin:0 0 9px;font-size:21px;line-height:1.3;letter-spacing:-.018em;
-  font-weight:600;color:hsl(var(--accent-foreground))}
-.promo p{margin:0 0 18px;font-size:15.5px;color:hsl(var(--accent-foreground));opacity:.92;max-width:52ch}
-.promo .btn{font-size:15px;padding:11px 20px}
+/* compact version, sits above the article rather than after it */
+.promo-bar{display:flex;gap:16px;align-items:center;flex-wrap:wrap;
+  border:1px solid hsl(var(--primary)/.3);background:hsl(var(--accent));
+  border-radius:12px;padding:14px 18px;margin:26px 0 4px}
+.promo-bar p{margin:0;font-size:14.5px;line-height:1.45;flex:1 1 320px;
+  color:hsl(var(--accent-foreground))}
+.promo-bar p b{font-weight:600}
+.promo-bar .btn{font-size:14px;padding:9px 17px;flex:none;white-space:nowrap}
+@media (max-width:560px){.promo-bar .btn{width:100%;text-align:center}}
 
 /* subscribe */
 .subscribe{background:hsl(var(--muted));border:1px solid hsl(var(--border));
@@ -497,19 +498,20 @@ ${body}
 }
 
 /**
- * Commercial recommendation block, carried over from the original site. It
- * sits between the article and the related links, which is where the reader
- * has finished the piece and is most likely to act. rel="sponsored" declares
- * the commercial relationship to search engines, and target="_blank" keeps the
- * article open behind it.
+ * Commercial recommendation.
+ *
+ * It sits above the article, directly under the hero image, where every reader
+ * sees it. Deliberately one line with no heading of its own: a sponsored h2
+ * above the prose would compete with the article's own structure and push the
+ * content the page ranks for further down.
+ *
+ * rel="sponsored" declares the commercial relationship to search engines, and
+ * target="_blank" keeps the article open behind it.
  */
-const clydeBlock = (slug) => `
-<aside class="promo">
-  <p class="eyebrow">Recommended by ${BRAND}</p>
-  <h2>Purity is the variable you can control</h2>
-  <p>Evidence quality is decided by the literature. What is actually in the vial is decided by
-     your supplier. Clyde Peptides publishes a third-party certificate of analysis for every
-     batch. Educational use only, not for human consumption.</p>
+const clydeBar = (slug) => `
+<aside class="promo-bar">
+  <p><b>Buying peptides?</b> Clyde Peptides publishes a third-party certificate of analysis for
+     every batch. Educational use only, not for human consumption.</p>
   <a class="btn" href="${shopLink(slug)}" target="_blank" rel="noopener noreferrer sponsored">Visit Clyde Peptides</a>
 </aside>`;
 
@@ -736,6 +738,7 @@ function buildPost(p) {
       <span><span class="n">${esc(p.author)}</span><br><span class="r">${esc(p.role)} · <time datetime="${iso}">${esc(p.date)}</time></span></span>
     </div>
     ${heroPicture(p, p.heroAlt || p.title, { eager: true, sizes: '(max-width:760px) 100vw, 720px' })}
+    ${clydeBar(p.slug)}
     ${p.keyPoints && p.keyPoints.length ? `<section class="keypoints" aria-labelledby="kp">
       <h2 id="kp">The short version</h2>
       <ul>${p.keyPoints.map((k) => `<li>${esc(k)}</li>`).join('')}</ul>
@@ -744,7 +747,6 @@ function buildPost(p) {
     <div class="prose">${prose}</div>
     ${tags.length ? `<div class="tags">${tags.map((t) => `<a href="/?q=${encodeURIComponent(t)}">#${esc(t)}</a>`).join('')}</div>` : ''}
   </article>
-  ${clydeBlock(p.slug)}
   <section class="related" aria-labelledby="related-h">
     <h2 id="related-h">Related reading</h2>
     <ul>
