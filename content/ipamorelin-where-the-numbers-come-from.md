@@ -21,11 +21,14 @@ heroAlt: Chart rating the evidence for ipamorelin by domain. Receptor
 evidenceTier: Preclinical, development discontinued
 evidenceNote: The receptor pharmacology is well characterised. Human development was abandoned before any dose-ranging programme in the population now using it.
 keyPoints:
-  - Ipamorelin stimulates the body’s growth hormone release through the ghrelin
-    receptor. Commonly discussed protocols generally fall around 100–300 mcg per
-    administration
-  - with some protocols using once-daily dosing and others splitting doses
-    across the day.
+  - Ipamorelin stimulates growth hormone release through the ghrelin receptor,
+    GHS-R1a, not the GHRH receptor that Tesamorelin and CJC-1295 use.
+  - The protocols circulating online are convention, not clinical findings. No
+    dose-ranging trial has ever been run in healthy trained adults.
+  - Novo Nordisk discontinued development in 2007 after a Phase 2 trial in
+    postoperative ileus failed to meet its endpoint.
+  - It holds no marketing authorisation from the MHRA, FDA or EMA for any
+    indication, anywhere.
 tags:
   - Ipamorelin
   - GHS-R1a
@@ -40,7 +43,7 @@ Rather than supplying growth hormone directly, Ipamorelin works by encouraging t
 
 It does this primarily by interacting with the growth hormone secretagogue receptor, also known as GHS-R1a. This is the same receptor involved in the activity of ghrelin, a hormone involved in appetite regulation and growth hormone signalling.
 
-That mechanism is what makes Ipamorelin different from compounds such as CJC-1295, which acts through the growth hormone-releasing hormone pathway.
+That mechanism is what makes Ipamorelin different from compounds such as CJC-1295, which acts through the growth hormone-releasing hormone pathway. We set the two receptor pathways side by side in [Ipamorelin, Tesamorelin and CJC-1295](/blog/ipamorelin-tesamorelin-cjc-1295/).
 
 Both can influence growth hormone release, but they do so through different signalling systems.
 
@@ -302,7 +305,7 @@ Stacking also makes it harder to identify which compound is responsible for a be
 
 Ipamorelin + BPC-157 or TB-500
 
-Ipamorelin is also frequently included in broader peptide stacks alongside compounds such as BPC-157 or TB-500.
+Ipamorelin is also frequently included in broader peptide stacks alongside compounds such as [BPC-157](/blog/bpc-157-preclinical-file/) or [TB-500](/blog/tb-500-thymosin-beta-4/). Both have a far thinner human evidence base than their popularity suggests.
 
 The theory is to target different aspects of recovery.
 
