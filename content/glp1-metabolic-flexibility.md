@@ -7,8 +7,8 @@ dek: The open question isn't whether these drugs work—it's what they leave
 description: Semaglutide and tirzepatide reliably cut weight and HbA1c. Do they
   restore metabolic flexibility, or only lighten the load? What the trials show.
 category: Research
-author: Stephen Petrucci
-role: Founder, Biohack Health
+author: Biohack Health
+role: Editorial
 date: 2026-08-25
 hero: glp1-metabolic-flexibility
 heroAlt: Laboratory setting illustrating GLP-1 receptor activity and metabolic
