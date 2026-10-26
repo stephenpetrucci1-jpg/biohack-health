@@ -1,28 +1,39 @@
 ---
-title: 'Peptide Regulation in 2026: What Actually Changed'
-seoTitle: 'Peptide Regulation 2026: What Actually Changed'
-dek: 'The regulatory landscape shifted through three separate mechanisms: a compounding decision in 2023, shortage resolutions in 2024-25, and an enforcement campaign in 2026.'
-description: 'The regulatory landscape shifted through three separate mechanisms: a compounding decision in 2023, shortage resolutions in 2024-25, and an enforcement campaign in 2026.'
+title: "Peptide Regulation in 2026: What Actually Changed"
+seoTitle: "Peptide Regulation 2026: UK and US Rules Explained"
+dek: "The regulatory landscape shifted through three separate mechanisms: a
+  compounding decision in 2023, shortage resolutions in 2024-25, and an
+  enforcement campaign in 2026."
+description: "What changed for peptides from 2023 to 2026: FDA category 2, the
+  end of mass compounded GLP-1s, and how MHRA rules treat research-use
+  peptides."
 category: News
 author: Biohack Health
 role: Editorial
-date: '2026-08-25'
-order: 40
-evidenceTier: Regulatory
-evidenceNote: This is a summary of published regulatory positions as of August 2026. Rules differ by jurisdiction, change frequently, and are enforced case by case. For the current status of a specific compound, check the relevant agency directly.
+date: 2026-08-25
 hero: home-hero
 heroAlt: Gavel and regulatory documents on a desk beside labelled peptide vials
+evidenceTier: Regulatory
+evidenceNote: This is a summary of published regulatory positions as of August
+  2026. Rules differ by jurisdiction, change frequently, and are enforced case
+  by case. For the current status of a specific compound, check the relevant
+  agency directly.
+keyPoints:
+  - The 2023 to 2026 changes read as a course correction rather than a crackdown.
+  - Broad compounded GLP-1 replication has ended, while patient-specific
+    compounding survives on a narrower list.
+  - Research-use-only peptides are legally distinct laboratory reagents, not
+    approved for human use anywhere.
 tags:
   - Regulation
   - FDA
   - Compounding
   - News
-keyPoints:
-  - The 2023 to 2026 changes read as a course correction rather than a crackdown.
-  - Broad compounded GLP-1 replication has ended, while patient-specific compounding survives on a narrower list.
-  - Research-use-only peptides are legally distinct laboratory reagents, not approved for human use anywhere.
+order: 40
 ---
 <div>
+<p><em>Updated 26 October 2026</em></p>
+
 <p>The peptide landscape looks materially different from three years ago, and most of the change happened through three separate mechanisms that are frequently confused with one another: a compounding decision in 2023, a shortage resolution across 2024–25, and an enforcement campaign that escalated sharply in 2026.</p>
 
 <p>Understanding which channel a given compound sits in explains most of what people find confusing about this market.</p>
@@ -32,7 +43,7 @@ keyPoints:
 <table>
 <thead><tr><th>Framework</th><th>What it covers</th></tr></thead>
 <tbody>
-<tr><td>FDA drug approval</td><td>Peptides marketed as approved therapeutics — semaglutide, tirzepatide, teriparatide</td></tr>
+<tr><td>FDA drug approval</td><td>Peptides marketed as approved therapeutics: semaglutide, tirzepatide, teriparatide</td></tr>
 <tr><td>§503A compounding</td><td>Patient-specific prescriptions from state-licensed pharmacies</td></tr>
 <tr><td>§503B outsourcing</td><td>cGMP bulk compounding for clinics, under FDA registration</td></tr>
 <tr><td>Research use only</td><td>Non-clinical laboratory reagents, not regulated as medicine</td></tr>
@@ -43,14 +54,14 @@ keyPoints:
 
 <h2>What the 2023 category-2 designations did</h2>
 
-<p>In 2023 the FDA classified a group of peptides as category 2 bulk substances — meaning the agency judged them to raise sufficient safety or efficacy concerns to be inappropriate for §503A compounding. The list included <a href="https://biohackhealth.uk/blog/bpc-157-preclinical-file">BPC-157</a>, thymosin alpha-1, thymosin beta-4 (<a href="https://biohackhealth.uk/blog/tb-500-thymosin-beta-4">TB-500</a>), CJC-1295 and ipamorelin, among others.</p>
+<p>In 2023 the FDA classified a group of peptides as <a href="https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks">category 2 bulk substances</a>, meaning the agency judged them to raise sufficient safety or efficacy concerns to be inappropriate for §503A compounding. The list included <a href="https://biohackhealth.uk/blog/bpc-157-preclinical-file">BPC-157</a>, thymosin alpha-1, thymosin beta-4 (<a href="https://biohackhealth.uk/blog/tb-500-thymosin-beta-4">TB-500</a>), <a href="/blog/ipamorelin-tesamorelin-cjc-1295/">CJC-1295 and ipamorelin</a>, among others.</p>
 
 <p>The practical effect:</p>
 
 <ul>
 <li>These compounds became unavailable through legitimate patient-specific compounding</li>
 <li>Clinicians prescribing them through compounding pharmacies had to stop or reroute</li>
-<li>The research-use market was not directly affected — different channel</li>
+<li>The research-use market was not directly affected: different channel</li>
 <li>Category 2 is not permanent; substances can be reclassified as evidence accumulates</li>
 </ul>
 
@@ -67,15 +78,15 @@ keyPoints:
 <tbody>
 <tr><td>2022</td><td>Both drugs placed on the FDA shortage list</td></tr>
 <tr><td>2023</td><td>Compounded GLP-1 market expands rapidly; scrutiny increases</td></tr>
-<tr><td>Oct 2024</td><td>Tirzepatide shortage declared resolved</td></tr>
+<tr><td>Oct 2024</td><td><a href="https://www.fda.gov/media/185577/download">Tirzepatide shortage declared resolved</a></td></tr>
 <tr><td>Dec 2024</td><td>Tirzepatide compounding wind-down begins</td></tr>
-<tr><td>Feb 2025</td><td>Semaglutide shortage declared resolved</td></tr>
+<tr><td>Feb 2025</td><td><a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fda-clarifies-policies-compounders-national-glp-1-supply-begins-stabilize">Semaglutide shortage declared resolved</a></td></tr>
 <tr><td>2025</td><td>Litigation between compounders and FDA over wind-down timelines</td></tr>
 <tr><td>Late 2025–2026</td><td>Wind-downs conclude; broad replication no longer permitted</td></tr>
 </tbody>
 </table>
 
-<p>Patient-specific compounding for genuine individualised clinical reasons — documented allergy, an atypical dose — remains possible in principle. The large-scale "compounded semaglutide, $X a month" telehealth model does not. The broader pharmacology of these drugs is covered in our piece on <a href="https://biohackhealth.uk/blog/glp1-metabolic-flexibility">GLP-1 agonists and metabolic flexibility</a>.</p>
+<p>Patient-specific compounding for genuine individualised clinical reasons (documented allergy, an atypical dose) remains possible in principle. The large-scale "compounded semaglutide, $X a month" telehealth model does not. The broader pharmacology of these drugs is covered in our piece on <a href="https://biohackhealth.uk/blog/glp1-metabolic-flexibility">GLP-1 agonists and metabolic flexibility</a>.</p>
 
 <p>This was never a ban. It was the expiry of a temporary allowance that existed only because of the shortage.</p>
 
@@ -83,11 +94,11 @@ keyPoints:
 
 <p>The newer development, and the one changing the practical landscape fastest, is enforcement around retatrutide.</p>
 
-<p>Retatrutide is an investigational triple agonist in Phase 3 trials with no approval anywhere. Because it's a biologic with no approved active ingredient, it falls outside the compounding pathway entirely — there is no shortage-style loophole available. We cover the trial data in detail in our <a href="https://biohackhealth.uk/blog/retatrutide-after-phase-3">retatrutide Phase 3 readout</a>.</p>
+<p>Retatrutide is an investigational triple agonist in Phase 3 trials with no approval anywhere. Because it's a biologic with no approved active ingredient, it falls outside the compounding pathway entirely: there is no shortage-style loophole available. We cover the trial data in detail in our <a href="https://biohackhealth.uk/blog/retatrutide-after-phase-3">retatrutide Phase 3 readout</a>.</p>
 
-<p>In June 2026 the FDA stated that sales of unapproved retatrutide to consumers are illegal and that it cannot lawfully be compounded, describing research-use-only products in this category as being of unknown quality.</p>
+<p>In June 2026 the <a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss">FDA stated</a> that sales of unapproved retatrutide to consumers are illegal and that it cannot lawfully be compounded, describing research-use-only products in this category as being of unknown quality.</p>
 
-<p>In August 2026 Eli Lilly filed six lawsuits against US entities selling retatrutide, targeting compounding pharmacies, medical spas and online sellers. The specific allegation in several was that the "research use only" label was a fiction and the product was intended for human use. Lilly stated it had referred more than 200 entities to the FDA, the Department of Justice, state attorneys general and licensing boards, and had identified over 14,000 websites, adverts and listings across more than 100 countries. It also publicly called on payment processors, e-commerce platforms and logistics companies to withdraw service from these sellers.</p>
+<p>In August 2026 Eli Lilly <a href="https://investor.lilly.com/news-releases/news-release-details/lilly-calls-online-platforms-payment-companies-and-regulators">filed six lawsuits</a> against US entities selling retatrutide, targeting compounding pharmacies, medical spas and online sellers. The specific allegation in several was that the "research use only" label was a fiction and the product was intended for human use. Lilly stated it had referred more than 200 entities to the FDA, the Department of Justice, state attorneys general and licensing boards, and had identified over 14,000 websites, adverts and listings across more than 100 countries. It also publicly called on payment processors, e-commerce platforms and logistics companies to withdraw service from these sellers.</p>
 
 <p>The significance for the wider market isn't about retatrutide specifically. It's that the RUO designation is now being tested in court as a factual claim rather than accepted as a labelling formality. That's a change in how the channel works, and it will likely outlast this particular compound.</p>
 
@@ -95,7 +106,7 @@ keyPoints:
 
 <p>RUO peptides occupy a genuinely distinct legal space. They are laboratory reagents, not medicines. Regulatory constraints are much lighter and quality controls, where they exist, are voluntary.</p>
 
-<p>For actual research applications — in vitro work, animal studies — the channel is legitimate and necessary. For human use it is neither approved nor endorsed by any regulatory authority anywhere.</p>
+<p>For actual research applications (in vitro work, animal studies) the channel is legitimate and necessary. For human use it is neither approved nor endorsed by any regulatory authority anywhere.</p>
 
 <p>The uncomfortable reality is that the channel serves both a real research need and a large de facto consumer market it was never designed for. That ambiguity is unlikely to resolve through either full legalisation or full prohibition. The more probable path is what's happening now: continued grey-zone operation with periodic enforcement against whoever is most visibly treating the label as decorative.</p>
 
@@ -111,21 +122,21 @@ keyPoints:
 <li>Certificates issued against each batch, not a single generic document</li>
 </ul>
 
-<p>Material without a lot-specific certificate isn't usable for reproducible research, because you cannot know what produced your result. Independent testing across this market has repeatedly found label mismatches — wrong purity, wrong concentration, occasionally wrong compound. Contradictory findings in the informal literature often reflect vial contents rather than pharmacology.</p>
+<p>Material without a lot-specific certificate isn't usable for reproducible research, because you cannot know what produced your result. Independent testing across this market has repeatedly found label mismatches: wrong purity, wrong concentration, occasionally wrong compound. Contradictory findings in the informal literature often reflect vial contents rather than pharmacology.</p>
 
 <h2>Outside the United States</h2>
 
 <table>
 <thead><tr><th>Jurisdiction</th><th>Framework</th><th>Notes</th></tr></thead>
 <tbody>
-<tr><td>UK</td><td>MHRA; Human Medicines Regulations 2012; Section 10 exemption for pharmacy preparation</td><td>Advertising an unlicensed medicinal product is itself an offence, separate from supply</td></tr>
+<tr><td>UK</td><td>MHRA; <a href="https://www.legislation.gov.uk/uksi/2012/1916/contents">Human Medicines Regulations 2012</a>; <a href="https://www.legislation.gov.uk/ukpga/1968/67/section/10">Section 10 exemption</a> for pharmacy preparation</td><td>Advertising an unlicensed medicinal product is itself an offence, separate from supply</td></tr>
 <tr><td>EU</td><td>EMA approval; national compounding rules</td><td>Practice varies considerably by member state</td></tr>
 <tr><td>Australia</td><td>TGA scheduling; most peptides Schedule 4</td><td>Strict prescription requirements</td></tr>
 <tr><td>Canada</td><td>Health Canada; Natural Health Products framework for some</td><td>Distinct from the US structure</td></tr>
 </tbody>
 </table>
 
-<p>The UK detail is worth pulling out because it's frequently missed. Under the Human Medicines Regulations 2012, advertising an unlicensed medicinal product is a separate offence from supplying one. Unlicensed medicine supply carries up to two years' imprisonment and unlimited fines, with personal director liability under Regulation 338. The MHRA's jurisdiction turns substantially on presentation and intended use — meaning how a product is described can determine whether it's a medicine, independent of what's in the vial.</p>
+<p>The UK detail is worth pulling out because it's frequently missed. Under the Human Medicines Regulations 2012, <a href="https://www.legislation.gov.uk/uksi/2012/1916/regulation/279">advertising an unlicensed medicinal product</a> is a separate offence from supplying one. Unlicensed medicine supply carries up to two years' imprisonment and unlimited fines, with personal director liability under <a href="https://www.legislation.gov.uk/uksi/2012/1916/regulation/338">Regulation 338</a>. The MHRA's jurisdiction turns substantially on presentation and intended use, meaning how a product is described can determine whether it's a medicine, independent of what's in the vial.</p>
 
 <p>The direction of travel across all four jurisdictions is broadly consistent: increasing scrutiny of grey markets, preserved space for legitimate individualised compounding, and rapid response when a new peptide class attracts public attention.</p>
 
@@ -140,7 +151,7 @@ keyPoints:
 <li>Clinical trials of investigational peptides continue under IND</li>
 </ul>
 
-<p>The tightening has landed almost entirely on the middle ground — compounds being prescribed and marketed as though they were established therapeutics without the clinical evidence to support that framing.</p>
+<p>The tightening has landed almost entirely on the middle ground: compounds being prescribed and marketed as though they were established therapeutics without the clinical evidence to support that framing.</p>
 
 <h2>Where the evidence stands</h2>
 
@@ -192,7 +203,7 @@ keyPoints:
 <p>Purchasing RUO material for genuine laboratory use is generally not illegal. Self-administration is not the intended use and is not endorsed by any regulatory authority. The 2026 litigation is specifically testing whether sellers can claim RUO while marketing to consumers.</p>
 
 <h3>What is a Certificate of Analysis?</h3>
-<p>A per-lot document from an independent lab confirming purity, identity and endotoxin content. Lot-specific matters — a generic certificate covering all batches confirms nothing about the vial you have.</p>
+<p>A per-lot document from an independent lab confirming purity, identity and endotoxin content. Lot-specific matters: a generic certificate covering all batches confirms nothing about the vial you have.</p>
 
 <h3>Are compounded peptides FDA-approved?</h3>
 <p>No. The pharmacy may be registered (503B) or state-licensed (503A), but the finished preparation is not an approved drug.</p>
@@ -207,15 +218,19 @@ keyPoints:
 <hr>
 
 <div>
-<h2>Sources</h2>
+<h2>References</h2>
 <ul>
-<li>US FDA. Compounding and the FDA: Questions and Answers.</li>
-<li>US FDA. Bulk Drug Substances Nominated for Use in Compounding Under Section 503A/503B.</li>
-<li>US FDA. Concerns with Unapproved GLP-1 Drugs Used for Weight Loss.</li>
-<li>Drug Quality and Security Act, Pub. L. No. 113-54 (2013).</li>
-<li>Human Medicines Regulations 2012 (UK).</li>
-<li>MHRA. Guidance on the manufacture of "specials".</li>
-<li>Eli Lilly and Company. Statement on retatrutide black market enforcement, August 2026.</li>
+<li>US FDA. <a href="https://www.fda.gov/drugs/human-drug-compounding/compounding-and-fda-questions-and-answers">Compounding and the FDA: Questions and Answers</a>.</li>
+<li>US FDA. <a href="https://www.fda.gov/drugs/human-drug-compounding/bulk-drug-substances-used-compounding-under-section-503a-fdc-act">Bulk Drug Substances Used in Compounding Under Section 503A of the FD&amp;C Act</a>.</li>
+<li>US FDA. <a href="https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks">Certain Bulk Drug Substances for Use in Compounding that May Present Significant Safety Risks</a>.</li>
+<li>US FDA. <a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fdas-concerns-unapproved-glp-1-drugs-used-weight-loss">FDA's Concerns with Unapproved GLP-1 Drugs Used for Weight Loss</a> (updated 15 June 2026).</li>
+<li>US FDA. <a href="https://www.fda.gov/media/185577/download">Resolution of Tirzepatide Injection Product Shortage and Supply Status</a>, 19 December 2024.</li>
+<li>US FDA. <a href="https://www.fda.gov/drugs/drug-alerts-and-statements/fda-clarifies-policies-compounders-national-glp-1-supply-begins-stabilize">FDA clarifies policies for compounders as national GLP-1 supply begins to stabilize</a> (semaglutide shortage resolved, 21 February 2025).</li>
+<li><a href="https://www.govinfo.gov/app/details/PLAW-113publ54">Drug Quality and Security Act, Pub. L. No. 113-54 (2013)</a>.</li>
+<li><a href="https://www.legislation.gov.uk/uksi/2012/1916/contents">Human Medicines Regulations 2012 (UK)</a>, including <a href="https://www.legislation.gov.uk/uksi/2012/1916/regulation/279">regulation 279</a> (advertising) and <a href="https://www.legislation.gov.uk/uksi/2012/1916/regulation/338">regulation 338</a> (offences by bodies corporate).</li>
+<li><a href="https://www.legislation.gov.uk/ukpga/1968/67/section/10">Medicines Act 1968, section 10</a> (exemptions for pharmacists).</li>
+<li>MHRA. <a href="https://www.gov.uk/government/publications/supply-unlicensed-medicinal-products-specials">Supply unlicensed medicinal products (specials)</a>.</li>
+<li>Eli Lilly and Company. <a href="https://investor.lilly.com/news-releases/news-release-details/lilly-calls-online-platforms-payment-companies-and-regulators">Lilly calls on online platforms, payment companies and regulators to shut down the illegal retatrutide black market</a>. News release, 12 August 2026.</li>
 </ul>
 </div>
 </div><div><a href="https://biohackhealth.uk/?q=Regulation">#Regulation</a><a href="https://biohackhealth.uk/?q=FDA">#FDA</a><a href="https://biohackhealth.uk/?q=Compounding">#Compounding</a><a href="https://biohackhealth.uk/?q=News">#News</a></div>
