@@ -7,8 +7,8 @@ dek: Most writing about TB-500 cites research about Thymosin Beta-4. Those are
 description: TB-500 is a fragment of thymosin beta-4, not the full molecule.
   What the cardiac, corneal and tendon research covers, and the human data gap.
 category: Research
-author: Stephen Petrucci
-role: Founder, Biohack Health
+author: Biohack Health
+role: Editorial
 date: 2026-08-25
 hero: tb-500-thymosin-beta-4
 heroAlt: Molecular structure comparison of full-length Thymosin Beta-4 against
