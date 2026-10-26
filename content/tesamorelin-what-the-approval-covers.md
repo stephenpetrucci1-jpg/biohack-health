@@ -1,31 +1,46 @@
 ---
-title: 'Tesamorelin: What the Approval Actually Covers'
-seoTitle: 'Tesamorelin Evidence: What the Trials Actually Showed'
-dek: Tesamorelin is one of the few peptides in this space with a genuine regulatory approval behind it. The approval is for a population most people reading about it do not belong to.
-description: Tesamorelin has real Phase 3 data and an FDA approval from 2010. Both are far narrower than the bodybuilding coverage suggests.
+title: "Tesamorelin: What the Approval Actually Covers"
+seoTitle: "Tesamorelin: What the FDA Approval Covers and Excludes"
+dek: Tesamorelin is one of the few peptides in this space with a genuine
+  regulatory approval behind it. The approval is for a population most people
+  reading about it do not belong to.
+description: Tesamorelin has real Phase 3 data and a 2010 FDA approval, for
+  HIV-associated abdominal fat only. What the trials measured and what they did
+  not.
 category: Research
 author: Biohack Health
 role: Editorial
-date: '2026-09-05'
-evidenceTier: Approved, narrow indication
-evidenceNote: Large placebo-controlled trials exist and the compound is approved, but only for HIV-associated lipodystrophy. No approval or controlled trial supports use for body composition in healthy adults.
+date: 2026-09-05
 hero: tesamorelin-approval-scope
-heroAlt: Diagram of what the tesamorelin approval covers. A short approved band for excess abdominal fat in HIV-associated lipodystrophy sits beside a much longer unapproved band for body composition, recovery or sleep in healthy trained adults, above the figures two Phase 3 trials, FDA approval in 2010 as Egrifta, and one approved indication.
+heroAlt: Diagram of what the tesamorelin approval covers. A short approved band
+  for excess abdominal fat in HIV-associated lipodystrophy sits beside a much
+  longer unapproved band for body composition, recovery or sleep in healthy
+  trained adults, above the figures two Phase 3 trials, FDA approval in 2010 as
+  Egrifta, and one approved indication.
+evidenceTier: Approved, narrow indication
+evidenceNote: Large placebo-controlled trials exist and the compound is
+  approved, but only for HIV-associated lipodystrophy. No approval or controlled
+  trial supports use for body composition in healthy adults.
+keyPoints:
+  - Tesamorelin is approved, which almost nothing else in this category is, but
+    only for excess abdominal fat in people with HIV-associated lipodystrophy.
+  - The trials measured visceral fat, not muscle. There is no controlled
+    evidence that it builds lean mass in healthy trained adults.
+  - The effect reverses when you stop, and glucose tolerance moves in the wrong
+    direction while you are on it.
 tags:
   - Tesamorelin
   - GHRH
   - Visceral Fat
   - Growth Hormone
-keyPoints:
-  - Tesamorelin is approved, which almost nothing else in this category is, but only for excess abdominal fat in people with HIV-associated lipodystrophy.
-  - The trials measured visceral fat, not muscle. There is no controlled evidence that it builds lean mass in healthy trained adults.
-  - The effect reverses when you stop, and glucose tolerance moves in the wrong direction while you are on it.
 ---
+
+*Updated 26 October 2026*
 
 Tesamorelin sits in an odd position. Almost every compound covered on this site
 is preclinical, unapproved, or both. Tesamorelin is neither. It went through
-two large placebo-controlled Phase 3 trials, it was approved by the FDA in
-2010 under the name Egrifta, and it has been prescribed clinically for over a
+two large placebo-controlled Phase 3 trials ([2007](https://pubmed.ncbi.nlm.nih.gov/18057338/), [2010](https://pubmed.ncbi.nlm.nih.gov/20101189/)), it was [approved by the FDA in
+2010](https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=022505) under the name Egrifta, and it has been prescribed clinically for over a
 decade.
 
 That makes it the strongest evidence base of anything in the peptide
@@ -59,10 +74,11 @@ abdominal cavity around the organs. That visceral fat is metabolically
 active and associated with cardiovascular risk, which is why it was worth
 treating.
 
-The primary endpoint was visceral adipose tissue measured by CT scan.
-Tesamorelin at 2 mg daily produced reductions in the region of 15 to 18
-percent against placebo, sustained across the treatment period. IGF-1 rose
-substantially, as the mechanism predicts. Later work in the same population
+The primary endpoint was [visceral adipose tissue measured by CT scan](https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/022505s020lbl.pdf).
+In the two trials, tesamorelin at 2 mg daily cut visceral fat by 18% and 14%,
+against changes of +2% and -2% on placebo, according to the
+[FDA label](https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/022505s020lbl.pdf), sustained across the treatment period. IGF-1 rose
+substantially, as the mechanism predicts. [Later work in the same population](https://pubmed.ncbi.nlm.nih.gov/31611038/)
 also showed reductions in liver fat.
 
 Read the endpoint carefully. The trials measured a specific fat compartment in
@@ -71,7 +87,7 @@ or training adaptation, and they were not run in healthy people.
 
 ## What happens when you stop
 
-An extension phase answered a question most coverage skips. Participants who
+An [extension phase](https://pubmed.ncbi.nlm.nih.gov/18057338/) answered a question most coverage skips. Participants who
 came off tesamorelin regained the visceral fat. The compound suppresses the
 compartment while it is being taken, and the suppression is not durable
 afterwards.
@@ -128,7 +144,7 @@ all. They are convention.
 Tesamorelin, [ipamorelin and CJC-1295](/blog/ipamorelin-tesamorelin-cjc-1295/)
 get grouped together as growth hormone peptides, which obscures the thing that
 actually separates them. Tesamorelin and CJC-1295 act on the GHRH receptor.
-Ipamorelin acts on a different receptor entirely, the ghrelin receptor, and
+[Ipamorelin](/blog/ipamorelin-where-the-numbers-come-from/) acts on a different receptor entirely, the ghrelin receptor, and
 mimics a different signal.
 
 More to the point here: only one of the three has ever completed Phase 3 and
@@ -195,8 +211,8 @@ insulin. It reversed on stopping.
 
 ## References
 
-- Falutz J, et al. Metabolic effects of a growth hormone-releasing factor in patients with HIV. *N Engl J Med.* 2007.
-- Falutz J, et al. Effects of tesamorelin on visceral fat and health outcomes in HIV. *J Acquir Immune Defic Syndr.* 2010.
-- Stanley TL, et al. Effects of tesamorelin on visceral adiposity and metabolic parameters. *Clin Infect Dis.* 2012.
-- Stanley TL, et al. Effects of tesamorelin on hepatic fat in people with HIV and NAFLD. *Lancet HIV.* 2019.
-- US FDA. Egrifta prescribing information.
+- Falutz J, et al. [Metabolic effects of a growth hormone-releasing factor in patients with HIV](https://pubmed.ncbi.nlm.nih.gov/18057338/). *N Engl J Med.* 2007.
+- Falutz J, et al. [Effects of tesamorelin, a growth hormone-releasing factor, in HIV-infected patients with abdominal fat accumulation: a randomized placebo-controlled trial with a safety extension](https://pubmed.ncbi.nlm.nih.gov/20101189/). *J Acquir Immune Defic Syndr.* 2010.
+- Stanley TL, et al. [Reduction in visceral adiposity is associated with an improved metabolic profile in HIV-infected patients receiving tesamorelin](https://pubmed.ncbi.nlm.nih.gov/22495074/). *Clin Infect Dis.* 2012.
+- Stanley TL, et al. [Effects of tesamorelin on non-alcoholic fatty liver disease in HIV: a randomised, double-blind, multicentre trial](https://pubmed.ncbi.nlm.nih.gov/31611038/). *Lancet HIV.* 2019.
+- US FDA. [EGRIFTA WR prescribing information](https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/022505s020lbl.pdf) (current label). Approval history: [Drugs@FDA, NDA 022505](https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=022505).
