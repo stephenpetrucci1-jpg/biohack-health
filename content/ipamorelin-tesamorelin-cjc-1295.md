@@ -1,31 +1,48 @@
 ---
-title: 'Ipamorelin, Tesamorelin and CJC-1295: Two Receptors, Three Compounds, One Approval'
-seoTitle: 'Ipamorelin vs Tesamorelin vs CJC-1295: The Real Differences'
-dek: Ipamorelin, Tesamorelin and CJC-1295 get grouped as growth hormone peptides. They split two ways on mechanism, and only one of the three has ever been approved.
-description: Ipamorelin, Tesamorelin and CJC-1295 get grouped as growth hormone peptides. They split two ways on mechanism, and only one of the three has ever been approved.
+title: "Ipamorelin, Tesamorelin and CJC-1295: Two Receptors, Three Compounds,
+  One Approval"
+seoTitle: "Ipamorelin vs CJC-1295 vs Tesamorelin: Key Differences"
+dek: Ipamorelin, Tesamorelin and CJC-1295 get grouped as growth hormone
+  peptides. They split two ways on mechanism, and only one of the three has ever
+  been approved.
+description: Two receptor pathways, very different half-lives and one approval.
+  How ipamorelin, CJC-1295 and tesamorelin actually differ, from the trial data.
 category: Research
 author: Biohack Health
 role: Editorial
-date: '2026-09-01'
-order: 10
-evidenceTier: Phase 3 and earlier
-evidenceNote: Ipamorelin and CJC-1295 hold no marketing authorisation from the MHRA, FDA, EMA or any other regulator, for any indication, anywhere. Tesamorelin is FDA-approved for one narrow population and is not available on prescription in the UK. Nothing here is medical advice, and nothing here should be read as a protocol.
+date: 2026-09-01
 hero: ipamorelin-tesamorelin-cjc-1295
-heroAlt: Diagram comparing the GHRH receptor pathway used by Tesamorelin and CJC-1295 against the GHS-R1a ghrelin receptor pathway used by Ipamorelin, both converging on the pituitary somatotroph
+heroAlt: Diagram comparing the GHRH receptor pathway used by Tesamorelin and
+  CJC-1295 against the GHS-R1a ghrelin receptor pathway used by Ipamorelin, both
+  converging on the pituitary somatotroph
+evidenceTier: Phase 3 and earlier
+evidenceNote: Ipamorelin and CJC-1295 hold no marketing authorisation from the
+  MHRA, FDA, EMA or any other regulator, for any indication, anywhere.
+  Tesamorelin is FDA-approved for one narrow population and is not available on
+  prescription in the UK. Nothing here is medical advice, and nothing here
+  should be read as a protocol.
+keyPoints:
+  - Tesamorelin and CJC-1295 bind the GHRH receptor. Ipamorelin binds the
+    ghrelin receptor, GHS-R1a. Two mechanisms, not one.
+  - "Tesamorelin is the only one approved: FDA 2010, for HIV-associated
+    lipodystrophy, on 806 patients across two Phase 3 trials."
+  - '"CJC-1295 without DAC" is Modified GRF (1-29), a different molecule.
+    Half-life is about thirty minutes against six to eight days.'
+  - No controlled trial in healthy adults has measured body composition,
+    recovery or sleep for any of the three.
+  - In July 2026 an FDA advisory committee recommended six peptides for 503A
+    compounding. Neither Ipamorelin nor CJC-1295 was reviewed.
 tags:
   - Ipamorelin
   - Tesamorelin
   - CJC-1295
   - Growth Hormone
   - GHRH
-keyPoints:
-  - Tesamorelin and CJC-1295 bind the GHRH receptor. Ipamorelin binds the ghrelin receptor, GHS-R1a. Two mechanisms, not one.
-  - 'Tesamorelin is the only one approved: FDA 2010, for HIV-associated lipodystrophy, on 806 patients across two Phase 3 trials.'
-  - '"CJC-1295 without DAC" is Modified GRF (1-29), a different molecule. Half-life is about thirty minutes against six to eight days.'
-  - No controlled trial in healthy adults has measured body composition, recovery or sleep for any of the three.
-  - In July 2026 an FDA advisory committee recommended six peptides for 503A compounding. Neither Ipamorelin nor CJC-1295 was reviewed.
+order: 10
 ---
 <div>
+<p><em>Updated 26 October 2026</em></p>
+
 <p>These three turn up on the same lists, in the same articles, under the same heading. The grouping isn't wrong, exactly. All three raise growth hormone, all three are injected, all three are peptides. But it flattens two differences that decide almost everything worth knowing about them.</p>
 
 <p>The first is mechanical. Tesamorelin and CJC-1295 bind one receptor. Ipamorelin binds a different one. They aren't variations on a theme, they're two separate ways into the same pituitary.</p>
@@ -36,11 +53,11 @@ keyPoints:
 
 <h2>Where the evidence stands, in short</h2>
 
-<p><strong>Tesamorelin</strong> is a synthetic analogue of human growth hormone-releasing hormone. The FDA approved it in November 2010 as Egrifta, for reducing excess visceral abdominal fat in people with HIV-associated lipodystrophy. Two Phase 3 trials, 806 participants pooled, 26 weeks at 2 mg daily. Visceral fat fell 18% in one trial and 14% in the other, against 2% on placebo in both. Stop the drug and the fat comes back.</p>
+<p><strong>Tesamorelin</strong> is a synthetic analogue of human growth hormone-releasing hormone. The FDA <a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=022505">approved it in November 2010 as Egrifta</a>, for reducing excess visceral abdominal fat in people with HIV-associated lipodystrophy. <a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/022505s020lbl.pdf">Two Phase 3 trials, 806 participants pooled</a>, 26 weeks at 2 mg daily. Visceral fat fell 18% in one trial and 14% in the other, against 2% on placebo in both. Stop the drug and the fat comes back.</p>
 
-<p><strong>Ipamorelin</strong> is a pentapeptide that binds the ghrelin receptor. It was built at Novo Nordisk in the 1990s as the first genuinely selective growth hormone secretagogue, and the selectivity is the interesting part rather than the potency. Development reached Phase 2 for post-operative ileus and stopped there.</p>
+<p><strong>Ipamorelin</strong> is a pentapeptide that binds the ghrelin receptor. It was built at Novo Nordisk in the 1990s as the first genuinely selective growth hormone secretagogue, and the selectivity is the interesting part rather than the potency. Development reached <a href="https://pubmed.ncbi.nlm.nih.gov/25331030/">Phase 2 for post-operative ileus</a> and stopped there.</p>
 
-<p><strong>CJC-1295 with DAC</strong> is a GHRH analogue engineered to bind serum albumin, which stretches its half-life to roughly six to eight days. Human data exists (Teichman et al., 2006) showing IGF-1 elevated for the better part of a week off a single dose. Development was discontinued and the public record on why is thin.</p>
+<p><strong>CJC-1295 with DAC</strong> is a GHRH analogue engineered to bind serum albumin, which stretches its half-life to roughly six to eight days. Human data exists (<a href="https://pubmed.ncbi.nlm.nih.gov/16352683/">Teichman et al., 2006</a>) showing IGF-1 elevated for the better part of a week off a single dose. Development was discontinued and the public record on why is thin.</p>
 
 <p><strong>CJC-1295 without DAC</strong> isn't CJC-1295. It's Modified GRF (1-29), a different compound with a half-life of about thirty minutes. More on this below, because it's the most commonly repeated error in the category.</p>
 
@@ -60,7 +77,7 @@ keyPoints:
 
 <p>Tesamorelin is GHRH(1-44) with a trans-3-hexenoyl group attached to the N-terminus. That modification exists for one reason: native GHRH is cleaved by the enzyme DPP-4 within minutes, and the added group blocks the cleavage site. The result survives long enough to be dosed once a day.</p>
 
-<p>The approval is narrow and worth reading precisely. It covers reduction of excess visceral adipose tissue in HIV-infected patients with lipodystrophy. Not general fat loss, not body recomposition in healthy adults, not anti-ageing. The population studied had a specific metabolic problem caused by a specific drug class, and the trials measured a specific fat depot by CT scan.</p>
+<p>The approval is narrow and worth reading precisely. It covers reduction of excess visceral adipose tissue in HIV-infected patients with lipodystrophy. Not general fat loss, not body recomposition in healthy adults, not anti-ageing. The population studied had a specific metabolic problem caused by a specific drug class, and the trials measured a specific fat depot by CT scan. We set out the trial file in <a href="/blog/tesamorelin-what-the-approval-covers/">what the tesamorelin approval covers</a>.</p>
 
 <table>
 <thead><tr><th>Phase 3 trial</th><th>Patients</th><th>Visceral fat change</th><th>Placebo</th></tr></thead>
@@ -71,9 +88,9 @@ keyPoints:
 </tbody>
 </table>
 
-<p>Falutz et al. ran the pivotal work, published in the New England Journal of Medicine in 2007 and pooled in a later analysis. Subcutaneous fat was largely unaffected, which is the finding that made it interesting: the drug moved one fat depot and left the other alone. IGF-1 rose as expected. The effect reversed after discontinuation, so it behaves like a maintenance therapy rather than a course.</p>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/18057338/">Falutz et al.</a> ran the pivotal work, published in the New England Journal of Medicine in 2007 and pooled in a later analysis. Subcutaneous fat was largely unaffected, which is the finding that made it interesting: the drug moved one fat depot and left the other alone. IGF-1 rose as expected. The effect reversed after discontinuation, so it behaves like a maintenance therapy rather than a course.</p>
 
-<p>Later work looked at liver fat in the same population (Stanley et al., Lancet HIV) with reductions in hepatic fat fraction, and there's a smaller literature on cognition in mild cognitive impairment. Neither has produced a second approval.</p>
+<p>Later work looked at liver fat in the same population (<a href="https://pubmed.ncbi.nlm.nih.gov/31611038/">Stanley et al., Lancet HIV</a>) with reductions in hepatic fat fraction, and there's a smaller literature on cognition in mild cognitive impairment. Neither has produced a second approval.</p>
 
 <p>Reported adverse effects track what you'd expect from raising growth hormone: arthralgia, peripheral oedema, myalgia, paraesthesia, injection site reactions, and impaired glucose tolerance. It's contraindicated in active malignancy, in pregnancy, and where the hypothalamic-pituitary axis is disrupted.</p>
 
@@ -83,13 +100,13 @@ keyPoints:
 
 <p>The growth hormone-releasing peptides that came before Ipamorelin worked, and they worked messily. GHRP-6, GHRP-2 and hexarelin all raise growth hormone, and at the doses that do it they also move cortisol, ACTH and prolactin. For a drug meant to be given repeatedly, that's a problem.</p>
 
-<p>Raun et al. published Ipamorelin in 1998 as the first selective compound in the class. At doses producing a full growth hormone response, ACTH and cortisol stayed at baseline. That's the entire reason the molecule is notable, and it's why it still gets discussed almost thirty years later despite never reaching market.</p>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/9849822/">Raun et al.</a> published Ipamorelin in 1998 as the first selective compound in the class. At doses producing a full growth hormone response, ACTH and cortisol stayed at baseline. That's the entire reason the molecule is notable, and it's why it still gets discussed almost thirty years later despite never reaching market.</p>
 
 <p>There's a second oddity. Ipamorelin binds the ghrelin receptor, and ghrelin is the hunger hormone, yet Ipamorelin produces comparatively little appetite stimulation next to GHRP-6. The receptor is the same. The downstream behaviour isn't. Nobody has fully explained this, and it's a reasonable argument that receptor-level selectivity is more complicated than an agonist/antagonist binary.</p>
 
 <p>Clinically it went to Phase 2 for post-operative ileus, where the reasoning was that ghrelin receptor agonism promotes gastric motility. It didn't progress. Half-life is roughly two hours.</p>
 
-<p>What Ipamorelin does not have is a single controlled trial in healthy adults measuring body composition, recovery, sleep quality or any of the outcomes it's discussed for. The mechanism is well characterised. The clinical claims attached to it are not. That gap between a clean preclinical file and an empty clinical one is a pattern in this space, and we've written about a starker version of it in the <a href="https://biohackhealth.uk/blog/bpc-157-preclinical-file">BPC-157 preclinical file</a>.</p>
+<p>What Ipamorelin does not have is a single controlled trial in healthy adults measuring body composition, recovery, sleep quality or any of the outcomes it's discussed for. The mechanism is well characterised. The clinical claims attached to it are not, and we trace the dose figures in <a href="/blog/ipamorelin-where-the-numbers-come-from/">where the ipamorelin numbers come from</a>. That gap between a clean preclinical file and an empty clinical one is a pattern in this space, and we've written about a starker version of it in the <a href="https://biohackhealth.uk/blog/bpc-157-preclinical-file">BPC-157 preclinical file</a>.</p>
 
 <h2>CJC-1295: two molecules, one name</h2>
 
@@ -109,11 +126,11 @@ keyPoints:
 </tbody>
 </table>
 
-<p>Teichman et al. published the human pharmacokinetics in 2006. Single subcutaneous doses produced growth hormone elevation and IGF-1 increases in the range of one and a half to three times baseline, sustained for six days or more. That's the property nothing else in the class has, and it's what ConjuChem was developing.</p>
+<p><a href="https://pubmed.ncbi.nlm.nih.gov/16352683/">Teichman et al.</a> published the human pharmacokinetics in 2006. Single subcutaneous doses produced growth hormone elevation and IGF-1 increases in the range of one and a half to three times baseline, sustained for six days or more. That's the property nothing else in the class has, and it's what ConjuChem was developing.</p>
 
 <p>What's sold as "CJC-1295 without DAC" is Modified GRF (1-29): the same four substitutions, no albumin linker, half-life around thirty minutes. It's a real compound with a real rationale, and calling it CJC-1295 is like calling a car without an engine a car with the engine removed. The name refers to the thing that was taken out.</p>
 
-<p>The practical consequence is that two products under one label produce completely different pharmacology. One elevates IGF-1 for most of a week. The other clears before you've finished the washing up. Any article, forum post or product page that discusses "CJC-1295" without saying which one is describing nothing in particular.</p>
+<p>The practical consequence is that two products under one label produce entirely different pharmacology. One elevates IGF-1 for most of a week. The other clears before you've finished the washing up. Any article, forum post or product page that discusses "CJC-1295" without saying which one is describing nothing in particular.</p>
 
 <p>We covered the same failure mode from a different angle in <a href="https://biohackhealth.uk/blog/tb-500-thymosin-beta-4">TB-500 and Thymosin Beta-4</a>, where a fragment and its parent molecule get treated as one compound. It's the most reliable way to spot writing that hasn't gone back to the primary literature.</p>
 
@@ -160,16 +177,16 @@ keyPoints:
 
 <h2>Regulatory position</h2>
 
-<p>All three are prohibited in sport at all times under WADA's S2 category, covering peptide hormones, growth factors and mimetics. GHRH analogues and growth hormone secretagogues are both named there. A negative growth hormone test doesn't clear you, because the assays target the secretagogues directly.</p>
+<p>All three are prohibited in sport at all times under <a href="https://www.wada-ama.org/en/prohibited-list">WADA's S2 category</a>, covering peptide hormones, growth factors and mimetics. GHRH analogues and growth hormone secretagogues are both named there. A negative growth hormone test doesn't clear you, because the assays target the secretagogues directly.</p>
 
 <p>The US compounding position is where this gets misreported, so the dates matter.</p>
 
 <table>
 <thead><tr><th>Date</th><th>What happened</th></tr></thead>
 <tbody>
-<tr><td>September 2023</td><td>FDA moved more than a dozen peptides into Category 2 of the interim 503A bulks list, CJC-1295 and ipamorelin acetate among them.</td></tr>
+<tr><td>September 2023</td><td>FDA moved more than a dozen peptides into <a href="https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks">Category 2</a> of the interim 503A bulks list, CJC-1295 and ipamorelin acetate among them.</td></tr>
 <tr><td>September 2024</td><td>Both removed from Category 2 after the nominators withdrew their nominations. Procedure, not a safety finding.</td></tr>
-<tr><td>July 2026</td><td>The Pharmacy Compounding Advisory Committee recommended six peptides for the 503A list. Neither compound was on the agenda.</td></tr>
+<tr><td>July 2026</td><td>The <a href="https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026">Pharmacy Compounding Advisory Committee</a> recommended six peptides for the 503A list. Neither compound was on the agenda.</td></tr>
 </tbody>
 </table>
 
@@ -215,13 +232,14 @@ keyPoints:
 <h2>References</h2>
 
 <ul>
-<li>Raun K, et al. Ipamorelin, the first selective growth hormone secretagogue. <em>European Journal of Endocrinology</em>, 1998.</li>
-<li>Teichman SL, et al. Prolonged stimulation of growth hormone and insulin-like growth factor I secretion by CJC-1295, a long-acting analog of GHRH, in healthy adults. <em>Journal of Clinical Endocrinology &amp; Metabolism</em>, 2006.</li>
-<li>Falutz J, et al. Metabolic effects of a growth hormone-releasing factor in patients with HIV. <em>New England Journal of Medicine</em>, 2007.</li>
-<li>Stanley TL, et al. Effects of tesamorelin on non-alcoholic fatty liver disease in HIV. <em>The Lancet HIV</em>, 2019.</li>
-<li>EGRIFTA prescribing information, US Food and Drug Administration.</li>
-<li>WADA Prohibited List, section S2: Peptide Hormones, Growth Factors, Related Substances and Mimetics.</li>
-<li>FDA, Interim 503A Bulk Drug Substances Categories, updated 29 September 2023 and 20 September 2024.</li>
-<li>FDA Pharmacy Compounding Advisory Committee, meeting of 23 to 24 July 2026, voting results.</li>
+<li>Raun K, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/9849822/">Ipamorelin, the first selective growth hormone secretagogue</a>. <em>European Journal of Endocrinology,</em> 1998.</li>
+<li>Teichman SL, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/16352683/">Prolonged stimulation of growth hormone (GH) and insulin-like growth factor I secretion by CJC-1295, a long-acting analog of GH-releasing hormone, in healthy adults</a>. <em>Journal of Clinical Endocrinology &amp; Metabolism,</em> 2006.</li>
+<li>Falutz J, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/18057338/">Metabolic effects of a growth hormone-releasing factor in patients with HIV</a>. <em>New England Journal of Medicine,</em> 2007.</li>
+<li>Stanley TL, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/31611038/">Effects of tesamorelin on non-alcoholic fatty liver disease in HIV: a randomised, double-blind, multicentre trial</a>. <em>The Lancet HIV,</em> 2019.</li>
+<li>Beck DE, et al. <a href="https://pubmed.ncbi.nlm.nih.gov/25331030/">Prospective, randomized, controlled, proof-of-concept study of the ghrelin mimetic ipamorelin for the management of postoperative ileus in bowel resection patients</a>. <em>International Journal of Colorectal Disease,</em> 2014.</li>
+<li><a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2025/022505s020lbl.pdf">EGRIFTA prescribing information</a>, US Food and Drug Administration. Approval history: <a href="https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm?event=overview.process&ApplNo=022505">Drugs@FDA, NDA 022505</a>.</li>
+<li><a href="https://www.wada-ama.org/en/prohibited-list">WADA Prohibited List</a>, section S2: Peptide Hormones, Growth Factors, Related Substances and Mimetics.</li>
+<li>FDA, <a href="https://www.fda.gov/drugs/human-drug-compounding/certain-bulk-drug-substances-use-compounding-may-present-significant-safety-risks">Certain bulk drug substances for use in compounding that may present significant safety risks</a> (interim 503A categories, including substances nominated but withdrawn).</li>
+<li>FDA, <a href="https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026">Pharmacy Compounding Advisory Committee, meeting of 23 to 24 July 2026</a>.</li>
 </ul>
 </div>
