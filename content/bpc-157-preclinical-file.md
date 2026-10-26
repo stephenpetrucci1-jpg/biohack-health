@@ -8,8 +8,8 @@ description: "What BPC-157 research shows: hundreds of animal studies, no
   completed controlled human trial, and open safety questions on angiogenesis
   and tumours."
 category: Research
-author: Stephen Petrucci
-role: Founder, Biohack Health
+author: Biohack Health
+role: Editorial
 date: 2026-08-25
 hero: bpc-157-preclinical-file
 heroAlt: Laboratory bench with pipettes, sample racks and a labelled BPC-157
