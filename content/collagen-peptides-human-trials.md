@@ -7,8 +7,8 @@ dek: Unusually for this space, the core findings come from controlled trials in
 description: Collagen peptide RCTs for skin, joints and tendons show modest but
   real effects. The dose, vitamin C and loading protocol the trials used.
 category: Research
-author: Stephen Petrucci
-role: Founder, Biohack Health
+author: Biohack Health
+role: Editorial
 date: 2026-08-25
 hero: collagen-peptides-human-trials
 heroAlt: Collagen peptide powder being prepared and weighed in a research laboratory
